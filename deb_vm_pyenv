@@ -1,0 +1,19 @@
+#!/bin/sh
+prerequisite () {
+    sudo apt install zlib1g zlib1g-dev libssl-dev libbz2-dev libsqlite3-dev lzma -y
+}
+
+install () {
+    curl https://pyenv.run | bash
+}
+
+post () {
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+    exec $SHELL
+}
+
+prerequisite
+install
+post
