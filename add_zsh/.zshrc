@@ -1,7 +1,9 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-# Theme configuration
-ZSH_THEME="jonathan"
+ZSH_THEME="JB"
+
+COMPLETION_WAITING_DOTS="%F{red}waiting...%f"
+COMPLETION_WAITING_DOTS="true"
 
 plugins=(
     git
@@ -23,6 +25,16 @@ export PATH=$PATH:$GOROOT/bin
 
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
 # Alias configuration
 alias jbip="curl http://ipecho.net/plain; echo"
