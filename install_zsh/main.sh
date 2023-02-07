@@ -15,3 +15,4 @@ add_plugin () {
 
 add_zsh
 add_omzsh
+add_plugin
