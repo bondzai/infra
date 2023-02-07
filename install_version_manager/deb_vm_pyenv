@@ -1,6 +1,8 @@
 #!/bin/sh
 prerequisite () {
-    sudo apt install zlib1g zlib1g-dev libssl-dev libbz2-dev libsqlite3-dev lzma -y
+    sudo apt-get install -y build-essential libssl-dev zlib1g-dev zlib1g libbz2-dev \
+    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    xz-utils tk-dev libffi-dev liblzma-dev python-openssl git lzma
 }
 
 install () {
