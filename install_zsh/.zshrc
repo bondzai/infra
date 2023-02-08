@@ -20,7 +20,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [[ -s "/home/jb/.gvm/scripts/gvm" ]] && source "/home/jb/.gvm/scripts/gvm"
-export GOROOT=~/goroot
+# export GOROOT=~/goroot
+export GOROOT=~/.gvm/gos/go1.19
 export PATH=$PATH:$GOROOT/bin
 
 export PYENV_ROOT="$HOME/.pyenv"
