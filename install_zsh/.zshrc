@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="JB"
+ZSH_THEME="jb"
 
 COMPLETION_WAITING_DOTS="%F{red}waiting...%f"
 COMPLETION_WAITING_DOTS="true"
@@ -14,18 +14,17 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [[ -s "/home/jb/.gvm/scripts/gvm" ]] && source "/home/jb/.gvm/scripts/gvm"
-# export GOROOT=~/goroot
-export GOROOT=~/.gvm/gos/go1.19
-export PATH=$PATH:$GOROOT/bin
+export GO111MODULE=on
+export GOWORK=
 
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
