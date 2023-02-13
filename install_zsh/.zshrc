@@ -20,7 +20,6 @@ export NVM_DIR="$HOME/.nvm"
 
 [[ -s "/home/jb/.gvm/scripts/gvm" ]] && source "/home/jb/.gvm/scripts/gvm"
 export GO111MODULE=on
-export GOWORK=
 
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
