@@ -3,7 +3,7 @@ version: "3.7"
 services:
 
     portainer:
-        image: portainer/portainer-ce:latest
+        image: ${PORTAINER_IMAGE}
         init: true
         container_name: portainer_con
         hostname: portainer
@@ -15,7 +15,7 @@ services:
           - /var/run/docker.sock:/var/run/docker.sock
 
     redis:
-        image: ${REDIS_IMAGE_LABEL}
+        image: ${REDIS_IMAGE}
         init: true
         container_name: redis_con
         hostname: redis
@@ -26,7 +26,7 @@ services:
           - backend
 
     pgadmin:
-      image: dpage/pgadmin4
+      image: ${PG_IMAGE}
       init: true
       container_name: pg_con
       hostname: pg
@@ -40,7 +40,7 @@ services:
         - backend
 
     db:
-      image: postgres:13.7
+      image: ${POSTGRES_IMAGE}
       init: true
       container_name: db_con
       hostname: db
@@ -55,7 +55,7 @@ services:
         - backend
 
     influxdb:
-      image: influxdb:latest
+      image: ${INFLUX_IMAGE}
       init: true
       container_name: influx_con
       hostname: influx
@@ -74,7 +74,7 @@ services:
         - backend
 
     grafana:
-        image: grafana/grafana:7.5.7
+        image: ${GRAFANA_IMAGE}
         init: true
         ports:
           - 3000:3000
