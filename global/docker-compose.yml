@@ -76,9 +76,11 @@ services:
     grafana:
         image: ${GRAFANA_IMAGE}
         init: true
+        container_name: grafana_con
+        hostname: grafana
+        restart: always
         ports:
           - 3000:3000
-        restart: always
         volumes:
           - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
           - grafana-data:/var/lib/grafana
