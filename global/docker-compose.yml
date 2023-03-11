@@ -32,8 +32,8 @@ services:
       hostname: pg
       restart: always
       environment:
-        PGADMIN_DEFAULT_EMAIL: admin@jb.dev
-        PGADMIN_DEFAULT_PASSWORD: jb12345678
+        PGADMIN_DEFAULT_EMAIL: admin@swd.dev
+        PGADMIN_DEFAULT_PASSWORD: swd12345
       ports:
         - 5050:80
       networks:
