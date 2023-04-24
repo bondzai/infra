@@ -99,6 +99,14 @@ services:
             - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
             - grafana-data:/var/lib/grafana
 
+    uptime-kuma:
+        image: louislam/uptime-kuma:1
+        container_name: uptime-kuma
+        volumes:
+            - ./uptime-kuma-data:/app/data
+        ports:
+            - 3001:3001  # <Host Port>:<Container Port>
+        restart: always
 volumes:
     data:
     grafana-data:
