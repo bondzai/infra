@@ -1,5 +1,21 @@
 version: '3.8'
 services:
+
+  nginx:
+    image: ${NGINX_IMAGE}
+    container_name: nginx_con
+    hostname: nginx
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./data:/nginx/config
+    ports:
+      - 82:80
+      - 444:443
+
   app:
     image: ${NPM_IMAGE}
     container_name: proxy_manager_con
