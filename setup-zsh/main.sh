@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 install_curl() {
     sudo apt-get update
     sudo apt-get install curl
@@ -18,7 +20,7 @@ add_plugin () {
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 }
 
-install_curl
-add_zsh
-add_omzsh
-add_plugin
+install_curl || { echo "Error installing curl"; exit 1; }
+add_zsh || { echo "Error installing zsh"; exit 1; }
+add_omzsh || { echo "Error installing Oh My Zsh"; exit 1; }
+add_plugin || { echo "Error adding plugins"; exit 1; }
