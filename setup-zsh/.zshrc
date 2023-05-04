@@ -25,15 +25,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # Alias configuration
-alias jbip="curl http://ipecho.net/plain; echo"
+alias jb-ip="curl http://ipecho.net/plain; echo"
+alias work-git-clone='bash ~/Desktop/code/tools/git-clone/main.sh'
