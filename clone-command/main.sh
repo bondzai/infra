@@ -1,14 +1,11 @@
 #!/bin/bash
 
-read -p "Enter the repository URL: " repo_url
+read -p "Enter the repository name: " repo_name
 
-username="your-username"
-password="your-password"
+username="username"
 
-if [ -n "$username" ]; then
-    clone_command="git clone https://$username:$password@${repo_url#https://}"
-else
-    clone_command="git clone $repo_url"
-fi
+pat="token"
+
+clone_command="git clone https://$username:$pat@github.com/swift-dynamics/$repo_name.git"
 
 $clone_command
