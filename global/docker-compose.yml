@@ -109,7 +109,6 @@ services:
         restart: always
 volumes:
     data:
-    grafana-data:
 networks:
     backend:
         driver: bridge
