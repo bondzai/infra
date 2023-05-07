@@ -20,7 +20,13 @@ add_plugin () {
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 }
 
+coppy_config () {
+    cp .zshrc ~/
+    cp jb.zsh-theme ~/.oh-my-zsh/custom/themes/
+}
+
 install_curl || { echo "Error installing curl"; exit 1; }
 add_zsh || { echo "Error installing zsh"; exit 1; }
 add_omzsh || { echo "Error installing Oh My Zsh"; exit 1; }
 add_plugin || { echo "Error adding plugins"; exit 1; }
+coppy_config || { echo "Error coppy config"; exit 1; }
