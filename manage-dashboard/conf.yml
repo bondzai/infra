@@ -75,6 +75,7 @@ sections:
     items:
       - title: Pi-Hole
         icon: https://avatars.githubusercontent.com/u/16827203?s=64&v=4
+        url: http://server.jb.lan/admin/
         target: newtab
         id: 0_861_pihole
       - title: NPM
