@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+
+    portainer:
+        image: ${PORTAINER_IMAGE}
+        init: true
+        container_name: portainer_con
+        hostname: portainer
+        restart: always
+        ports:
+            - 9443:9443
+        volumes:
+            - ./data/portainer:/data
+            - /var/run/docker.sock:/var/run/docker.sock
+        
+    yacht:
+      image: ${YACTH_IMAGE}
+      container_name: yacht-con
+      hostname: yacht
+      restart: unless-stopped
+      ports:
+        - 9444:8000
+      volumes:
+        - ./data/yacht:/config
+        - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+    data:
