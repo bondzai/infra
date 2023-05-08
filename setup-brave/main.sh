@@ -8,14 +8,13 @@ W="$(printf '\033[1;37m')"
 # C="$(printf '\033[1;36m')"
 
 banner(){
-clear
-printf ${R}"████████╗██████╗ \n"
-printf     "╚══██╔══╝██╔══██╗\n"
-printf     "   ██║   ██████╔╝\n"
-printf     "   ██║   ██╔══██╗\n"
-printf     "█████║   ██████╔╝\n"
-printf     "╚════╝   ╚═════╝ \n"${W}
-printf ${Y}"                By James-Bond\n"${W}
+    printf ${R}"████████╗██████╗ \n"
+    printf     "╚══██╔══╝██╔══██╗\n"
+    printf     "   ██║   ██████╔╝\n"
+    printf     "   ██║   ██╔══██╗\n"
+    printf     "█████║   ██████╔╝\n"
+    printf     "╚════╝   ╚═════╝ \n"${W}
+    printf ${Y}"                By James-Bond\n"${W}
 }
 
 function install_package {
