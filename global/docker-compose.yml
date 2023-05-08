@@ -13,20 +13,6 @@ services:
         volumes:
             - data:/data
             - /var/run/docker.sock:/var/run/docker.sock
-
-    heimdall:
-        image: ${HEIMDALL_IMAGE}
-        container_name: heimdall_con
-        hostname: heimdall
-        restart: unless-stopped
-        environment:
-        - PUID=1000
-        - PGID=1000
-        - TZ=Etc/UTC
-        ports:
-        - 8180:80
-        volumes:
-        - ./data/heimdall/config:/config
         
     redis:
         image: ${REDIS_IMAGE}
@@ -87,17 +73,17 @@ services:
         networks:
             - backend
 
-    grafana:
-        image: ${GRAFANA_IMAGE}
-        init: true
-        container_name: grafana_con
-        hostname: grafana
-        restart: always
-        ports:
-            - 3000:3000
-        volumes:
-            - ./data/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
-            - grafana-data:/var/lib/grafana
+    # grafana:
+    #     image: ${GRAFANA_IMAGE}
+    #     init: true
+    #     container_name: grafana_con
+    #     hostname: grafana
+    #     restart: always
+    #     ports:
+    #         - 3000:3000
+    #     volumes:
+    #         - ./data/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+    #         - grafana-data:/var/lib/grafana
 
     uptime-kuma:
         image: louislam/uptime-kuma:1
@@ -107,6 +93,7 @@ services:
         ports:
             - 3001:3001  # <Host Port>:<Container Port>
         restart: always
+        
 volumes:
     data:
 networks:
