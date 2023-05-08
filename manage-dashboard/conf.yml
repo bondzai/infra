@@ -147,7 +147,7 @@ appConfig:
   hideComponents:
     hideHeading: false
     hideNav: false
-    hideSearch: false
+    hideSearch: true
     hideSettings: false
     hideFooter: true
   auth:
