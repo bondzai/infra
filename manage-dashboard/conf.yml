@@ -79,6 +79,7 @@ sections:
         id: 0_861_pihole
       - title: NPM
         icon: https://nginxproxymanager.com/icon.png
+        url: http://192.168.192.179:181/
         target: newtab
         id: 1_861_npm
   - name: Schedule Workers
