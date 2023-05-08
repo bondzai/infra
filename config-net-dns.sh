@@ -14,6 +14,7 @@ EOT
 
 # Restart the systemd-networkd service to apply the new configuration
 sudo systemctl restart systemd-networkd
+sudo systemctl restart zerotier-one
 
 # Print the current DNS configuration to verify the change
 sudo resolvectl status
