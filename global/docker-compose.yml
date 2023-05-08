@@ -2,18 +2,6 @@ version: "3.7"
 
 services:
 
-    portainer:
-        image: ${PORTAINER_IMAGE}
-        init: true
-        container_name: portainer_con
-        hostname: portainer
-        restart: always
-        ports:
-            - 9443:9443
-        volumes:
-            - data:/data
-            - /var/run/docker.sock:/var/run/docker.sock
-        
     redis:
         image: ${REDIS_IMAGE}
         init: true
