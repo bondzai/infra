@@ -22,7 +22,7 @@ config () {
     printf ${Y}" Config local DNS (systemd-resolved service) ..."${W}
     echo
     sudo sed -i 's/nameserver 127\.0\.1\.1/nameserver 1.1.1.1/' /etc/resolv.conf
-    cat /etc/resolv.conf
+    sudo resolvectl 
     echo
     printf ${G}" Config local DNS successfully. "${W}
     echo
