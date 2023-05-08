@@ -1,23 +1,59 @@
 pageInfo:
   title: JamesBond Lab
-
 sections:
-  - name: Example Section
+  - name: Developer Links
     icon: far fa-rocket
     items:
-    - title: GitHub
-      description: Dashy source code and docs
-      icon: fab fa-github
-      url: https://github.com/Lissy93/dashy
-    - title: Issues
-      description: View open issues, or raise a new one
-      icon: fas fa-bug
-      url: https://github.com/Lissy93/dashy/issues
+      - title: GitHub
+        description: ''
+        icon: fab fa-github
+        url: https://github.com/introbond
+        id: 0_1479_github
+      - title: Website
+        description: ''
+        icon: fas fa-browser
+        url: https://thejb.onrender.com/
+        id: 1_1479_website
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
   - name: Local Services
     items:
-    - title: Firewall
-      icon: https://www.vectorlogo.zone/logos/brave/brave-icon.svg
-      url: http://192.168.1.1/
-    - title: Game Server
-      icon: https://i.ibb.co/710B3Yc/space-invader-x256.png
-      url: http://192.168.130.1/
+      - title: Firewall
+        icon: fas fa-shield-check
+        url: http://192.168.1.1/
+        id: 0_1359_firewall
+    icon: fas fa-user-secret
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+  - name: Containers
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Portainer
+        icon: https://vectorwiki.com/images/1pQaI__portainer.svg
+        url: https://localhost:9443
+        target: newtab
+        id: 0_1046_portainer
+      - title: Yacht
+        icon: https://yacht.sh/img/logo.svg
+        url: http://localhost:9444
+        target: newtab
+        id: 1_1046_yacht
+    icon: fas fa-cubes
+appConfig:
+  theme: dashy-docs
+  language: en
+  layout: auto
+  iconSize: small
