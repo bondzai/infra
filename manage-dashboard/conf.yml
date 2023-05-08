@@ -43,12 +43,12 @@ sections:
     items:
       - title: Portainer
         icon: https://vectorwiki.com/images/1pQaI__portainer.svg
-        url: https://localhost:9443
+        url: https://jamesbond.local:9443/#!/2/docker/containers
         target: newtab
         id: 0_1046_portainer
       - title: Yacht
         icon: https://yacht.sh/img/logo.svg
-        url: http://localhost:9444
+        url: http://jamesbond.local:9444
         target: newtab
         id: 1_1046_yacht
     icon: fas fa-cubes
