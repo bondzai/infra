@@ -8,13 +8,13 @@ sections:
         description: ''
         icon: fab fa-github
         url: https://github.com/introbond
-        target: modal
+        target: newtab
         id: 0_1479_github
       - title: Website
         description: ''
         icon: fas fa-browser
         url: https://thejb.onrender.com/
-        target: modal
+        target: newtab
         id: 1_1479_website
     displayData:
       sortBy: default
@@ -147,7 +147,7 @@ appConfig:
   hideComponents:
     hideHeading: false
     hideNav: false
-    hideSearch: true
+    hideSearch: false
     hideSettings: false
     hideFooter: true
   auth:
