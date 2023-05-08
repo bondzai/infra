@@ -5,7 +5,7 @@ services:
     redis:
         image: ${REDIS_IMAGE}
         init: true
-        container_name: redis_con
+        container_name: redis-con
         hostname: redis
         restart: always
         ports:
@@ -16,7 +16,7 @@ services:
     pgadmin:
         image: ${PG_IMAGE}
         init: true
-        container_name: pg_con
+        container_name: pg-con
         hostname: pg
         restart: always
         environment:
@@ -30,7 +30,7 @@ services:
     db:
         image: ${POSTGRES_IMAGE}
         init: true
-        container_name: db_con
+        container_name: db-con
         hostname: db
         restart: always
         ports:
@@ -45,7 +45,7 @@ services:
     influxdb:
         image: ${INFLUX_IMAGE}
         init: true
-        container_name: influx_con
+        container_name: influx-con
         hostname: influx
         restart: always
         ports:
