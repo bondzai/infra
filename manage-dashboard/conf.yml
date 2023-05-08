@@ -79,9 +79,13 @@ sections:
         id: 0_861_pihole
       - title: NPM
         icon: https://nginxproxymanager.com/icon.png
-        url: http://192.168.192.179:181/
         target: newtab
         id: 1_861_npm
+      - title: wireshark
+        icon: https://www.vectorlogo.zone/logos/wireshark/wireshark-icon.svg
+        url: http://192.168.192.179:23000/
+        target: newtab
+        id: 2_861_wireshark
   - name: Schedule Workers
     icon: ''
     displayData:
@@ -148,7 +152,7 @@ appConfig:
   hideComponents:
     hideHeading: false
     hideNav: false
-    hideSearch: true
+    hideSearch: false
     hideSettings: false
     hideFooter: true
   auth:
