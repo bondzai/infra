@@ -60,28 +60,7 @@ services:
             - DOCKER_INFLUXDB_INIT_BUCKET=demo
         networks:
             - backend
-
-    # grafana:
-    #     image: ${GRAFANA_IMAGE}
-    #     init: true
-    #     container_name: grafana_con
-    #     hostname: grafana
-    #     restart: always
-    #     ports:
-    #         - 3000:3000
-    #     volumes:
-    #         - ./data/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
-    #         - grafana-data:/var/lib/grafana
-
-    uptime-kuma:
-        image: louislam/uptime-kuma:1
-        container_name: uptime-kuma
-        volumes:
-            - ./data/uptime-kuma-data:/app/data
-        ports:
-            - 3001:3001  # <Host Port>:<Container Port>
-        restart: always
-        
+      
 volumes:
     data:
 networks:
