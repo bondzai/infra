@@ -122,6 +122,22 @@ sections:
         url: http://192.168.192.179:8086/
         target: newtab
         id: 1_1427_influxdb
+  - name: AOT
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: API
+        url: http://thejb.swd.dev:8000/swagger/
+        target: newtab
+        id: 0_228_api
+      - title: Dev-server API
+        url: http://aot-dev.sitearound.com:8000/swagger/
+        target: newtab
+        id: 1_228_devserverapi
 appConfig:
   theme: lissy
   language: en
