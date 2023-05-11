@@ -1,0 +1,12 @@
+services:
+    portainer:
+        image: ${PORTAINER_IMAGE}
+        init: true
+        container_name: portainer-con
+        hostname: portainer
+        restart: always
+        ports:
+            - 9443:9443
+        volumes:
+            - ./data/portainer:/data
+            - /var/run/docker.sock:/var/run/docker.sock
