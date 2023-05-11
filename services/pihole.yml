@@ -1,6 +1,6 @@
 services:
   pihole:
-    image: ${PIHOLE_IMAGE}
+    image: ${PIHOLE_IMAGE:-pihole/pihole:latest}
     container_name: pihole-con
     hostname: pihole
     ports:
