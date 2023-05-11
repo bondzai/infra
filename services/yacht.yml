@@ -1,0 +1,12 @@
+services:
+  yacht:
+    image: ${YACTH_IMAGE:-selfhostedpro/yacht:latest}
+    init: true
+    container_name: yacht-con
+    hostname: yacht
+    restart: always
+    ports:
+      - 9444:8000
+    volumes:
+      - ../data/yacht:/config
+      - /var/run/docker.sock:/var/run/docker.sock
