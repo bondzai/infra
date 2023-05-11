@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+
+  portainer:
+    extends:
+      file: ../services/portainer.yml
+      service: portainer
+
+  yacht:
+    extends:
+      file: ../services/yacht.yml
+      service: yacht
