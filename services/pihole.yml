@@ -1,0 +1,23 @@
+services:
+  pihole:
+    image: ${PIHOLE_IMAGE}
+    container_name: pihole-con
+    hostname: pihole
+    ports:
+      - "1053:53/tcp"
+      - "1053:53/udp"
+      - "1067:67/udp"
+      - "1080:80/tcp"
+      - "1443:443/tcp"
+    environment:
+      TZ: 'Asia/Bangkok'
+      WEBPASSWORD: 1234
+    volumes:
+      - './data/etc-pihole:/etc/pihole'
+      - './data/etc-dnsmasq.d:/etc/dnsmasq.d'
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+    cap_add:
+      - NET_ADMIN
+    restart: always
