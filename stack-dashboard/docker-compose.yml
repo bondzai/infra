@@ -6,3 +6,5 @@ services:
     extends:
       file: ../services/dashy.yml
       service: dashy
+    volumes:
+      - /root/my-config.yml:/app/public/conf.yml
