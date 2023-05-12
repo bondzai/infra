@@ -28,6 +28,7 @@ function install_package {
     echo "$1 not found. Installing $1..."
     echo
     sudo apt-get update
+    sudo apt install libu2f-udev
     sudo apt-get install $1 -y
 }
 
