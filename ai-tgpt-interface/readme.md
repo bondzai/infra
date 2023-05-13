@@ -1,5 +1,5 @@
 # Project Files Structure
-.
+. <br>
 ├── .gitignore <br>
 ├── ai.sh <br>
 ├── install.sh <br>
