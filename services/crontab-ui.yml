@@ -1,6 +1,6 @@
 services:
   crontab-ui:
-    image: alseambusher/crontab-ui
+    image: alseambusher/crontab-ui:latest
     container_name: crontab-ui
     restart: always
     ports:
