@@ -1,9 +1,9 @@
 # Project Files Structure
 .
-├── .gitignore
-├── ai.sh
-├── install.sh
-├── prompt.txt
+├── .gitignore <br>
+├── ai.sh <br>
+├── install.sh <br>
+├── prompt.txt <br>
 
 This is a simple project repository containing four files for managing and running a Bash script:
 
