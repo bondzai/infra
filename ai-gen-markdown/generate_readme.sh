@@ -33,6 +33,11 @@ scan_folder() {
 
 # Main script
 ignore_targets=()
+if [ -f ".scanignore" ]; then
+  # Read ignore targets from .scanignore file
+  mapfile -t ignore_targets <".scanignore"
+fi
+
 structure_content=$(scan_folder "." ".")
 echo -e "$structure_content" >structure.md
 
