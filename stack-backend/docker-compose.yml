@@ -1,29 +1,18 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
     redis:
-        image: ${REDIS_IMAGE}
-        init: true
-        container_name: redis-con
-        hostname: redis
-        restart: always
-        ports:
-            - 6379:6379
+        extends:
+            file: ../services/redis.yml
+            service: redis
         networks:
             - backend
 
     pgadmin:
-        image: ${PG_IMAGE}
-        init: true
-        container_name: pg-con
-        hostname: pg
-        restart: always
-        environment:
-            - PGADMIN_DEFAULT_EMAIL=admin@swd.dev
-            - PGADMIN_DEFAULT_PASSWORD=swd12345
-        ports:
-            - 5050:80
+        extends:
+            file: ../services/pgadmin.yml
+            service: pgadmin
         networks:
             - backend
 
@@ -53,11 +42,6 @@ services:
         volumes:
             - ./data/influx_backup:/var/lib/influxdb
             - .:/repo/
-        environment:
-            - DOCKER_INFLUXDB_INIT_USERNAME=admin
-            - DOCKER_INFLUXDB_INIT_PASSWORD=password
-            - DOCKER_INFLUXDB_INIT_ORG=jb
-            - DOCKER_INFLUXDB_INIT_BUCKET=demo
         networks:
             - backend
       
