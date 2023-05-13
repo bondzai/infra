@@ -37,7 +37,7 @@ structure_content=$(scan_folder "." ".")
 echo -e "$structure_content" >structure.md
 
 folder_name=$(basename "$(pwd)")
-readme_content="Write readme.md file with simple and meaningful content for the project $folder_name. $(cat structure.md | tr -d '\n')"
+readme_content="Write readme.md file with simple and meaningful description for the project $folder_name. $(cat structure.md | tr -d '\n')"
 
 tgpt_output=$(tgpt "$readme_content")
 echo "$tgpt_output" >readme.md
