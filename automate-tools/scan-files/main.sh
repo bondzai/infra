@@ -1,21 +1,32 @@
 #!/bin/bash
 
+# Get the current directory
+current_dir=$(pwd)
+
+# Check if .scanignore exists in the current directory
+if [ -f "$current_dir/.scanignore" ]; then
+  # Read the targets to ignore into an array
+  mapfile -t targets < "$current_dir/.scanignore"
+
+  # Function to check if a target should be ignored
+  should_ignore() {
+    local target="$1"
+    for ignore_target in "${targets[@]}"; do
+      if [[ "$target" =~ ^"$ignore_target" ]]; then
+        return 0
+      fi
+    done
+    return 1
+  }
+else
+  # Function to check if a target should be ignored
+  should_ignore() {
+    return 1
+  }
+fi
+
 echo "." > readme.md
 echo "├── .gitignore" >> readme.md
-
-# Read the targets to ignore into an array
-mapfile -t targets < .scanignore
-
-# Function to check if a target should be ignored
-should_ignore() {
-  local target="$1"
-  for ignore_target in "${targets[@]}"; do
-    if [[ "$target" =~ ^"$ignore_target" ]]; then
-      return 0
-    fi
-  done
-  return 1
-}
 
 # Function to scan sub-folders recursively
 scan_folder() {
