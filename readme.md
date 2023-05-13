@@ -3,36 +3,36 @@
 This is the directory structure for our project.
 
 
-.
-├── .gitignore
-├── data
-├── docker-files
-│   ├── node-chrome-stable
-│   │   ├── Dockerfile
-│   ├── node-chromium
-│   │   ├── Dockerfile
-├── readme.md
-├── services
-│   ├── dashy.yml
-│   ├── hiemdall.yml
-│   ├── nginx.yml
-│   ├── pgadmin.yml
-│   ├── pihole.yml
-│   ├── portainer.yml
-│   ├── redis.yml
-│   ├── uptime-kuma.yml
-│   ├── watchtower.yml
-│   ├── yacht.yml
-├── stack-backend
-│   ├── docker-compose.yml
-├── stack-dashboard
-│   ├── dashy-config.yml
-│   ├── docker-compose.yml
-├── stack-manage-containers
-│   ├── docker-compose.yml
-├── stack-manage-network
-│   ├── docker-compose.yml
-│   ├── unbond.conf
+. <br>
+├── .gitignore <br>
+├── readme.md <br>
+├── data <br>
+├── docker-files <br>
+│   ├── node-chrome-stable <br>
+│   │   ├── Dockerfile <br>
+│   ├── node-chromium <br>
+│   │   ├── Dockerfile <br>
+├── services <br>
+│   ├── dashy.yml <br>
+│   ├── hiemdall.yml <br>
+│   ├── nginx.yml <br>
+│   ├── pgadmin.yml <br>
+│   ├── pihole.yml <br>
+│   ├── portainer.yml <br>
+│   ├── redis.yml <br>
+│   ├── uptime-kuma.yml <br>
+│   ├── watchtower.yml <br>
+│   ├── yacht.yml <br>
+├── stack-backend <br>
+│   ├── docker-compose.yml <br>
+├── stack-dashboard <br>
+│   ├── dashy-config.yml <br>
+│   ├── docker-compose.yml <br>
+├── stack-manage-containers <br>
+│   ├── docker-compose.yml <br>
+├── stack-manage-network <br>
+│   ├── docker-compose.yml <br>
+│   ├── unbond.conf <br>
 
 
 ## Description
