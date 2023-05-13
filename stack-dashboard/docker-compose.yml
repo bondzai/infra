@@ -2,10 +2,9 @@ version: '3.8'
 
 services:
 
-  dashy:
-    extends:
-      file: ../services/dashy.yml
-      service: dashy
-    volumes:
-      - ./dashy-config.yml:/app/public/conf.yml
-      
+    dashy:
+        extends:
+            file: ../services/dashy.yml
+            service: dashy
+        volumes:
+            - ./dashy-config.yml:/app/public/conf.yml

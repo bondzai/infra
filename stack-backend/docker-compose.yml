@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+
+    redis:
+        extends:
+            file: ../services/redis.yml
+            service: redis
+        networks:
+            - backend
+
+    pgadmin:
+        extends:
+            file: ../services/pgadmin.yml
+            service: pgadmin
+        networks:
+            - backend
+
+    db:
+        image: ${POSTGRES_IMAGE}
+        init: true
+        container_name: db-con
+        hostname: db
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_USER=jb
+            - POSTGRES_PASSWORD=12345678
+            - POSTGRES_DB=init
+        networks:
+            - backend
+
+    influxdb:
+        image: ${INFLUX_IMAGE}
+        init: true
+        container_name: influx-con
+        hostname: influx
+        restart: always
+        ports:
+            - 8086:8086
+        volumes:
+            - ./data/influx_backup:/var/lib/influxdb
+            - .:/repo/
+        networks:
+            - backend
+      
+volumes:
+    data:
+networks:
+    backend:
+        driver: bridge
