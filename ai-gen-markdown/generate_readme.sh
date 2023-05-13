@@ -33,10 +33,11 @@ scan_folder() {
 
 # Main script
 ignore_targets=()
-readme_content=$(scan_folder "." ".")
-echo -e "$readme_content" > readme.md
+structure_content=$(scan_folder "." ".")
+echo -e "$structure_content" >structure.md
 
-concatenated_string="Write readme.md file with simple and meaningful content. $(cat readme.md | tr -d '\n')"
+folder_name=$(basename "$(pwd)")
+readme_content="Write readme.md file with simple and meaningful content for the project $folder_name. $(cat structure.md | tr -d '\n')"
 
-tgpt_output=$(tgpt "$concatenated_string")
-echo "$tgpt_output" > readme.md
+tgpt_output=$(tgpt "$readme_content")
+echo "$tgpt_output" >readme.md
