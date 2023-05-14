@@ -16,35 +16,23 @@ services:
         networks:
             - backend
 
-    db:
-        image: ${POSTGRES_IMAGE}
-        init: true
-        container_name: db-con
-        hostname: db
-        restart: always
-        ports:
-            - 5432:5432
-        environment:
-            - POSTGRES_USER=jb
-            - POSTGRES_PASSWORD=12345678
-            - POSTGRES_DB=init
+    postgres:
+        extends:
+            file: ../services/postgres.yml
+            service: postgres
         networks:
             - backend
 
-    influxdb:
-        image: ${INFLUX_IMAGE}
-        init: true
-        container_name: influx-con
-        hostname: influx
-        restart: always
-        ports:
-            - 8086:8086
+    influx:
+        extends:
+            file: ../services/influx.yml
+            service: influx
         volumes:
             - ./data/influx_backup:/var/lib/influxdb
             - .:/repo/
         networks:
             - backend
-      
+
 volumes:
     data:
 networks:
