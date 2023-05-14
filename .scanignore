@@ -1,1 +1,5 @@
-**data/
+./data/
+./lab-backend
+./stack-backend/data
+./stack-backend/influx_backup
+./stack-dashboard/readme.md

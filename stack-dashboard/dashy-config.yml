@@ -98,13 +98,15 @@ sections:
       hideForGuests: false
     items:
       - title: Crontab-UI
+        url: http://192.168.192.179:18000/
+        target: newtab
         id: 0_1594_crontabui
       - title: Uptime Kuma
         icon: https://uptime.kuma.pet/img/icon.svg
-        url: http://192.168.192.179:3001
+        url: http://192.168.192.179:18001/
         target: newtab
         id: 1_1594_uptimekuma
-  - name: Local Databases
+  - name: Databases
     displayData:
       sortBy: default
       rows: 1
@@ -116,12 +118,12 @@ sections:
         icon: https://www.vectorlogo.zone/logos/postgresql/postgresql-icon.svg
         url: http://192.168.192.179:5050/browser/
         target: newtab
-        id: 0_1427_postgresql
+        id: 0_904_postgresql
       - title: InfluxDB
         icon: https://www.vectorlogo.zone/logos/influxdata/influxdata-icon.svg
         url: http://192.168.192.179:8086/
         target: newtab
-        id: 1_1427_influxdb
+        id: 1_904_influxdb
   - name: AOT
     displayData:
       sortBy: default
@@ -138,6 +140,10 @@ sections:
         url: http://aot-dev.sitearound.com:8000/swagger/
         target: newtab
         id: 1_228_devserverapi
+      - title: Front-end
+        url: https://aot-dev.sitearound.com/dashboard
+        target: newtab
+        id: 2_228_frontend
 appConfig:
   theme: lissy
   language: en
