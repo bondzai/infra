@@ -106,7 +106,13 @@ sections:
         url: http://192.168.192.179:18001/
         target: newtab
         id: 1_1594_uptimekuma
-  - name: Databases
+      - title: Uptime Robot
+        icon: >-
+          https://images.bestalternatives.com/wp-content/uploads/2021/05/Uptimerobot-logo.jpg
+        url: https://uptimerobot.com/dashboard#mainDashboard
+        target: newtab
+        id: 2_1594_uptimerobot
+  - name: Local Databases
     displayData:
       sortBy: default
       rows: 1
@@ -118,12 +124,12 @@ sections:
         icon: https://www.vectorlogo.zone/logos/postgresql/postgresql-icon.svg
         url: http://192.168.192.179:5050/browser/
         target: newtab
-        id: 0_904_postgresql
+        id: 0_1427_postgresql
       - title: InfluxDB
         icon: https://www.vectorlogo.zone/logos/influxdata/influxdata-icon.svg
         url: http://192.168.192.179:8086/
         target: newtab
-        id: 1_904_influxdb
+        id: 1_1427_influxdb
   - name: AOT
     displayData:
       sortBy: default
@@ -133,7 +139,7 @@ sections:
       hideForGuests: false
     items:
       - title: API
-        url: http://thejb.swd.dev:8000/swagger/
+        url: http://192.168.192.179:8000/swagger/
         target: newtab
         id: 0_228_api
       - title: Dev-server API
@@ -144,6 +150,10 @@ sections:
         url: https://aot-dev.sitearound.com/dashboard
         target: newtab
         id: 2_228_frontend
+      - title: Frontend-local
+        url: http://192.168.11.107:3000/
+        target: newtab
+        id: 3_228_frontendlocal
 appConfig:
   theme: lissy
   language: en
