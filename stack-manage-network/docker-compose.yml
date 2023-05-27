@@ -2,10 +2,15 @@ version: '3.8'
 
 services:
 
-  nginx:
+  reverse-proxy:
     extends:
-      file: ../services/nginx.yml
-      service: nginx
+      file: ../services/mtraefik.yml
+      service: traefik
+
+  # nginx:
+  #   extends:
+  #     file: ../services/nginx.yml
+  #     service: nginx
 
   pihole:
     extends:

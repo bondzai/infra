@@ -1,0 +1,10 @@
+services:
+  crontab-ui:
+    image: alseambusher/crontab-ui:latest
+    container_name: crontab-ui
+    restart: always
+    ports:
+      - 18000:8000
+    volumes:
+      - ../data/crontabs:/crontab-ui/crontabs
+      

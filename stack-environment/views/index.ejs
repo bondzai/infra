@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Environment Variables</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .key-value-pair {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .key {
+            font-weight: bold;
+            margin-right: 10px;
+            flex-basis: 40%;
+        }
+
+        .value {
+            flex-basis: 60%;
+        }
+
+        .copy-button {
+            background-color: #1f6feb;
+            color: #c9d1d9;
+            border: none;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .copy-button:hover {
+            background-color: #388bfd;
+        }
+
+        .copied {
+            opacity: 0.4;
+        }
+
+        .flashBG {
+            animation-name: flash;
+            animation-timing-function: ease-out;
+            animation-duration: 1s;
+        }
+
+        @keyframes flash {
+            0% {
+                background: #28a745;
+            }
+            100% {
+                background: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><%= data.message %></h1>
+
+        <h2>Environment Variables:</h2>
+        <% Object.entries(data).forEach(([key, value]) => { %>
+            <div class="key-value-pair">
+                <div class="key"><%= key %>:</div>
+                <div class="value">
+                    <input type="text" value="<%= value %>" id="<%= key %>" readonly>
+                    <button class="copy-button" onclick="copyToClipboard('<%= key %>')">Copy</button>
+                </div>
+            </div>
+            <% }); %>
+            
+            <h2>AWS Credentials:</h2>
+            <% Object.entries(aws).forEach(([key, value]) => { %>
+                <div class="key-value-pair">
+                    <div class="key"><%= key %>:</div>
+                    <div class="value">
+                        <input type="text" value="<%= value %>" id="<%= key %>" readonly>
+                    <button class="copy-button" onclick="copyToClipboard('<%= key %>')">Copy</button>
+                </div>
+            </div>
+        <% }); %>
+
+        <script>
+            function copyToClipboard(key) {
+                const input = document.getElementById(key);
+                input.select();
+                document.execCommand("copy");
+                input.setSelectionRange(0, 0);
+                showCopiedEffect(input);
+            }
+        
+            function showCopiedEffect(input) {
+                input.classList.add("flashBG");
+                setTimeout(() => {
+                    input.classList.remove("flashBG");
+                }, 1000);
+            }
+        </script>
+        
+        
+    </div>
+</body>
+</html>
