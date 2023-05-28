@@ -10,7 +10,6 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 const data = {
-    message: 'Welcome to environment variables storage.',
     AOT_USERNAME: process.env.USERNAME,
     AOT_PASSWORD: process.env.PASSWORD,
     AOT_CLIENT_ID: process.env.CLIENT_ID,
