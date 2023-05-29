@@ -2,6 +2,13 @@ version: "3.8"
 
 services:
 
+    rabbitmq:
+        extends:
+            file: ../services/rabbitmq.yml
+            service: rabbitmq
+        networks:
+            - backend
+
     redis:
         extends:
             file: ../services/redis.yml

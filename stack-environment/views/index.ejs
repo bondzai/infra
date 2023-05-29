@@ -11,7 +11,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 80%;
             margin: 0 auto;
             padding: 20px;
         }
@@ -37,6 +37,7 @@
             background-color: #1f6feb;
             color: #c9d1d9;
             border: none;
+            border-radius: 5px;
             padding: 10px;
             text-align: center;
             text-decoration: none;
@@ -52,25 +53,11 @@
             opacity: 0.4;
         }
 
-        .flashBG {
-            animation-name: flash;
-            animation-timing-function: ease-out;
-            animation-duration: 1s;
-        }
-
-        @keyframes flash {
-            0% {
-                background: #28a745;
-            }
-            100% {
-                background: transparent;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1><%= data.message %></h1>
+        <h1> Welcome to environment variables storage </h1>
 
         <h2>Environment Variables:</h2>
         <% Object.entries(data).forEach(([key, value]) => { %>
@@ -100,15 +87,8 @@
                 input.select();
                 document.execCommand("copy");
                 input.setSelectionRange(0, 0);
-                showCopiedEffect(input);
             }
-        
-            function showCopiedEffect(input) {
-                input.classList.add("flashBG");
-                setTimeout(() => {
-                    input.classList.remove("flashBG");
-                }, 1000);
-            }
+
         </script>
         
         
