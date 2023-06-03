@@ -1,0 +1,35 @@
+---
+- name: Setup AUR packages
+  hosts: localhost
+  gather_facts: false
+  become: true
+
+  tasks:
+    - name: Install dependencies
+      pacman:
+        name: git,base-devel
+        state: latest
+
+    - name: Clone yay repository
+      git:
+        repo: "https://aur.archlinux.org/yay.git"
+        dest: "/tmp/yay"
+        clone: yes
+
+    - name: Build and install yay
+      shell: |
+        cd /tmp/yay
+        makepkg -si --noconfirm
+
+    - name: Clean up yay build files
+      file:
+        path: "/tmp/yay"
+        state: absent
+
+    - name: Install AUR packages
+      yay:
+        name:
+          - package1
+          - package2
+          - package3
+        state: present
