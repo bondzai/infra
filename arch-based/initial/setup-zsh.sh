@@ -1,2 +1,4 @@
 #!/bin/bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+yay -S gnome-terminal-transparency
