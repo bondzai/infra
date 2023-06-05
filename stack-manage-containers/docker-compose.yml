@@ -11,3 +11,8 @@ services:
     extends:
       file: ../services/yacht.yml
       service: yacht
+
+  rancher:
+    extends:
+      file: ../services/rancher.yml
+      service: rancher

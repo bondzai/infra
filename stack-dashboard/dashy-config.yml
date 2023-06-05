@@ -210,6 +210,11 @@ sections:
         url: https://aot-dev.sitearound.com/dashboard
         target: newtab
         id: 2_228_frontend
+      - title: AOT-Influx
+        icon: https://www.vectorlogo.zone/logos/influxdata/influxdata-icon.svg
+        url: >-
+          http://13.251.73.121:8086/signin?returnTo=/orgs/219c21b5e0eae569/data-explorer
+        id: 3_228_aotinflux
   - name: CM
     displayData:
       sortBy: default
@@ -231,3 +236,6 @@ sections:
           https://docs.google.com/spreadsheets/d/1PWT7jOBVUH1s34b6i4mXSRg58pe9cchuLXyB2mvbtDU/edit#gid=996080745
         target: newtab
         id: 2_144_note
+      - title: RabbitMQ
+        url: http://192.168.11.61:15672/
+        id: 3_144_rabbitmq
