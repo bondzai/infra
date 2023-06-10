@@ -76,6 +76,12 @@ sections:
           https://docs.google.com/spreadsheets/d/1crvuLtzcvYMdgxSbpMLa0OdOkxYDgY0yt0K6H7FwOsc/edit#gid=1249228179
         target: newtab
         id: 2_1479_googlesheet
+      - title: Replit
+        description: The JB cloud-based hosting lab
+        icon: https://www.vectorlogo.zone/logos/replit/replit-icon.svg
+        url: https://replit.com/@introbond
+        target: newtab
+        id: 3_1479_replit
     displayData:
       sortBy: default
       rows: 1
@@ -84,20 +90,19 @@ sections:
       hideForGuests: false
   - name: Services
     items:
-      - title: Firewall
-        icon: fas fa-shield-check
-        url: http://192.168.1.1/
-        id: 0_836_firewall
       - title: Secrets
         icon: fad fa-brackets-curly
-        url: http://jamesbond.local:1234
+        url: http://192.168.192.179:1234
         target: newtab
-        id: 1_836_secrets
+        id: 0_836_secrets
       - title: Web-Scrape
         icon: far fa-webhook
         url: http://jamesbond.local:5001/
         target: newtab
-        id: 2_836_webscrape
+        id: 1_836_webscrape
+      - title: SWD-Report
+        url: https://report.labs-sapjarern.click/builder/auth/login
+        id: 2_836_swdreport
     icon: fas fa-user-secret
     displayData:
       sortBy: default
@@ -143,11 +148,6 @@ sections:
         url: http://192.168.192.179:181/
         target: newtab
         id: 1_861_npm
-      - title: wireshark
-        icon: https://www.vectorlogo.zone/logos/wireshark/wireshark-icon.svg
-        url: http://192.168.192.179:23000/
-        target: newtab
-        id: 2_861_wireshark
   - name: Schedule Workers
     icon: ''
     displayData:
@@ -239,3 +239,15 @@ sections:
       - title: RabbitMQ
         url: http://192.168.11.61:15672/
         id: 3_144_rabbitmq
+  - name: Automate Config Management
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Ansible Semaphore
+        url: http://192.168.192.179:3500/
+        target: newtab
+        id: 0_2515_ansiblesemaphore
