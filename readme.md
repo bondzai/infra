@@ -3,29 +3,30 @@
 This is the directory structure for our project.
 
 
+
 .
-├── .gitignore
-├── data
-├── docker-files
-│   ├── node-chrome-stable
-│   │   ├── Dockerfile
-│   ├── node-chromium
-│   │   ├── Dockerfile
-├── readme.md
-├── services
-│   ├── service1.yml
-│   ├── service2.yml
-│   ├── service3.yml
-├── stack-backend
-│   ├── docker-compose.yml
-├── stack-dashboard
-│   ├── dashy-config.yml
-│   ├── docker-compose.yml
-├── stack-manage-containers
-│   ├── docker-compose.yml
-├── stack-manage-network
-│   ├── docker-compose.yml
-│   ├── unbond.conf
+├── .gitignore <br>
+├── data <br>
+├── docker-files <br>
+│   ├── node-chrome-stable <br>
+│   │   ├── Dockerfile <br>
+│   ├── node-chromium <br>
+│   │   ├── Dockerfile <br>
+├── readme.md <br>
+├── services <br>
+│   ├── service1.yml <br>
+│   ├── service2.yml <br>
+│   ├── service3.yml <br>
+├── stack-backend <br>
+│   ├── docker-compose.yml <br>
+├── stack-dashboard <br>
+│   ├── dashy-config.yml <br>
+│   ├── docker-compose.yml <br>
+├── stack-manage-containers <br>
+│   ├── docker-compose.yml <br>
+├── stack-manage-network <br>
+│   ├── docker-compose.yml <br>
+│   ├── unbond.conf <br>
 
 
 ## Description
