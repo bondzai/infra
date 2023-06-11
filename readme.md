@@ -3,26 +3,20 @@
 This is the directory structure for our project.
 
 
-. <br>
+
+.
 ├── .gitignore <br>
-├── readme.md <br>
 ├── data <br>
 ├── docker-files <br>
 │   ├── node-chrome-stable <br>
 │   │   ├── Dockerfile <br>
 │   ├── node-chromium <br>
 │   │   ├── Dockerfile <br>
+├── readme.md <br>
 ├── services <br>
-│   ├── dashy.yml <br>
-│   ├── hiemdall.yml <br>
-│   ├── nginx.yml <br>
-│   ├── pgadmin.yml <br>
-│   ├── pihole.yml <br>
-│   ├── portainer.yml <br>
-│   ├── redis.yml <br>
-│   ├── uptime-kuma.yml <br>
-│   ├── watchtower.yml <br>
-│   ├── yacht.yml <br>
+│   ├── service1.yml <br>
+│   ├── service2.yml <br>
+│   ├── service3.yml <br>
 ├── stack-backend <br>
 │   ├── docker-compose.yml <br>
 ├── stack-dashboard <br>
@@ -46,7 +40,6 @@ This is the directory structure for our project.
 - stack-dashboard/ - folder that contains a Docker Compose file and configuration for setting up a dashboard using Dashy.
 - stack-manage-containers/ - folder that contains a Docker Compose file for managing containers.
 - stack-manage-network/ - folder that contains a Docker Compose file for managing the network.
-- unbond.conf - configuration file for unbonding validator in Cosmos SDK.
 
 ## Usage
 
