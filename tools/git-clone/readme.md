@@ -1,1 +1,0 @@
-- exec the code like this `bash main.sh
