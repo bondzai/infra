@@ -1,13 +1,9 @@
 #!/bin/bash
 
-# Replace the placeholders with your actual values
-HOSTNAME="<hostname>"
-PORT="<port>"
-USERNAME="<username>"
-PASSWORD="<password>"
-DATABASE="<database_name>"
-MEASUREMENT="<measurement_name>"
-OUTPUT_FILE="data.csv"
+# Load environment variables from .env file
+if [[ -f ".env" ]]; then
+  source .env
+fi
 
 # Connect to InfluxDB and export data in CSV format
 influx -host "$HOSTNAME" -port "$PORT" -username "$USERNAME" -password "$PASSWORD" -database "$DATABASE" <<EOF
