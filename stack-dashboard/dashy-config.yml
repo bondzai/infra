@@ -239,15 +239,7 @@ sections:
       - title: RabbitMQ
         url: http://192.168.11.61:15672/
         id: 3_144_rabbitmq
-  - name: Automate Config Management
-    displayData:
-      sortBy: default
-      rows: 1
-      cols: 1
-      collapsed: false
-      hideForGuests: false
-    items:
-      - title: Ansible Semaphore
-        url: http://192.168.192.179:3500/
+      - title: Frontend-Local
+        url: http://192.168.11.107:3000
         target: newtab
-        id: 0_2515_ansiblesemaphore
+        id: 4_144_frontendlocal
