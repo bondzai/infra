@@ -1,8 +1,0 @@
-version: '3.8'
-
-services:
-
-  portainer:
-    extends:
-      file: ../services/redisinsight.yml
-      service: redisinsight
