@@ -1,0 +1,14 @@
+services:
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    init: true
+    container_name: redisinsight
+    ports:
+      - "8004:8001"
+    environment:
+      - TZ=UTC
+    volumes:
+      - redisinsight-data:/db
+    restart: always
+volumes:
+  redisinsight-data:
