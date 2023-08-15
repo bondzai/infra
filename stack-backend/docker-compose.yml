@@ -16,6 +16,13 @@ services:
         networks:
             - backend
 
+    redisinsight:
+        extends:
+            file: ../services/redis-insight.yml
+            service: redisinsight
+        networks:
+            - backend
+
     pgadmin:
         extends:
             file: ../services/pgadmin.yml
@@ -42,6 +49,7 @@ services:
 
 volumes:
     data:
+    redisinsight-data:
 networks:
     backend:
         driver: bridge
