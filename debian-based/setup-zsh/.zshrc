@@ -1,4 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
+export ZSH_WAKATIME_PROJECT_DETECTION=true
 
 ZSH_THEME="jb"
 
@@ -10,6 +11,7 @@ plugins=(
     docker
     zsh-autosuggestions
     zsh-syntax-highlighting
+    zsh-wakatime
   )
 
 source $ZSH/oh-my-zsh.sh
