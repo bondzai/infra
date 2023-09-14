@@ -10,5 +10,4 @@ services:
     volumes:
       - redisinsight-data:/db
     restart: always
-volumes:
-  redisinsight-data:
+
