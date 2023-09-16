@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  stackreverseproxy:
+    image: stackreverseproxy
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3006:3006
