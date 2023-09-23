@@ -15,8 +15,8 @@ add_omzsh() {
 
 add_plugin () {
     ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom} # set a default value if ZSH_CUSTOM is not set
-    cd ~/.oh-my-zsh/custom/plugins && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
-    cd ~/.oh-my-zsh/custom/plugins && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
     cd ~/.oh-my-zsh/custom/plugins && git clone https://github.com/wbingli/zsh-wakatime.git
 }
 
@@ -24,6 +24,8 @@ copy_config () {
     cp $PWD/.zshrc ~/
     cp $PWD/jb.zsh-theme ~/.oh-my-zsh/custom/themes/
 }
+
+exec $SHELL
 
 # error handling is managed by function itself
 if ! install_curl; then echo "Error installing curl"; exit 1; fi
