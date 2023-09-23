@@ -1,7 +1,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_WAKATIME_PROJECT_DETECTION=true
 
-ZSH_THEME="jb"
+# ZSH_THEME="jb"
+ZSH_THEME="archcraft"
 
 COMPLETION_WAITING_DOTS="%F{red}waiting...%f"
 COMPLETION_WAITING_DOTS="true"
@@ -11,7 +12,8 @@ plugins=(
     docker
     zsh-autosuggestions
     zsh-syntax-highlighting
-    zsh-wakatime
+    # zsh-wakatime
+    wakatime
   )
 
 source $ZSH/oh-my-zsh.sh
