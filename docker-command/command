@@ -1,2 +1,5 @@
 # sonarqube
 docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+
+# hivemq
+docker run -p 8080:8080 -p 1883:1883 hivemq/hivemq4
