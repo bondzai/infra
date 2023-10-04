@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  # Datadog
+  datadog:
+    image: datadog/agent:latest
+    environment:
+      - DD_API_KEY=your_datadog_api_key
+      - DD_LOGS_ENABLED=true
+      - DD_APM_ENABLED=true
+      - DD_APM_NON_LOCAL_TRAFFIC=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - monitoring
+
+  # Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus:/etc/prometheus
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    networks:
+      - monitoring
+
+  # Grafana
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin_password
+    networks:
+      - monitoring
+
+  # New Relic
+  newrelic:
+    image: newrelic/infrastructure:latest
+    environment:
+      - NRIA_LICENSE_KEY=your_newrelic_license_key
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
