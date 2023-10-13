@@ -1,8 +1,0 @@
-services:
-  rancher:
-    image: rancher/rancher
-    privileged: true
-    restart: unless-stopped
-    ports:
-      - 20080:80
-      - 20443:443

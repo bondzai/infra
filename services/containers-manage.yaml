@@ -22,3 +22,11 @@ services:
     volumes:
       - ../data/yacht:/config
       - /var/run/docker.sock:/var/run/docker.sock
+
+  rancher:
+    image: rancher/rancher
+    privileged: true
+    restart: unless-stopped
+    ports:
+      - "20080:80"
+      - "20443:443"
