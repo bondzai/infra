@@ -7,3 +7,15 @@ services:
     restart: always
     ports:
       - "${REDIS_PORT:-6379}:6379"
+
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    init: true
+    container_name: redisinsight-con
+    ports:
+      - "8004:8001"
+    environment:
+      - TZ=UTC
+    volumes:
+      - redisinsight-data:/db
+    restart: always

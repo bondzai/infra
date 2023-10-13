@@ -1,0 +1,33 @@
+services:
+  influx:
+    image: ${INFLUX_IMAGE:-influxdb:latest}
+    init: true
+    container_name: influx-con
+    hostname: influx
+    restart: always
+    ports:
+      - 8086:8086
+
+  postgres:
+    image: ${POSTGRES_IMAGE:-postgres:13-alpine3.17}
+    init: true
+    container_name: postgres-con
+    hostname: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=jb
+      - POSTGRES_PASSWORD=12345678
+      - POSTGRES_DB=init
+
+  mongodb:
+    image: mongo:latest
+    init: true
+    container_name: mongodb-con
+    hostname: mongodb
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db

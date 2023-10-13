@@ -1,9 +1,0 @@
-services:
-  influx:
-    image: ${INFLUX_IMAGE:-influxdb:latest}
-    init: true
-    container_name: influx-con
-    hostname: influx
-    restart: always
-    ports:
-      - 8086:8086
