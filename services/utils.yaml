@@ -1,4 +1,15 @@
 services:
+  ctfreak:
+    image: jypsoftware/ctfreak
+    container_name: ctfreak
+    environment:
+      - TZ=Asia/Bangkok
+    ports:
+      - "6700:6700"
+    volumes:
+      - ./ctfreak-data:/data
+    restart: "unless-stopped"
+
   crontab-ui:
     image: alseambusher/crontab-ui:latest
     container_name: crontab-ui
