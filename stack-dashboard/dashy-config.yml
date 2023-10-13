@@ -6,8 +6,8 @@ appConfig:
   customColors:
     lissy:
       primary: hsla(0,0%,100%,0.8)
-      background: '#25282c'
-      background-darker: '#191c20'
+      background: "#25282c"
+      background-darker: "#191c20"
       font-headings: '"Inconsolata","Georgia",sans-serif'
       font-body: '"Inconsolata","Georgia",sans-serif'
       font-monospace: '"Inconsolata","Georgia",sans-serif'
@@ -16,7 +16,7 @@ appConfig:
   statusCheck: false
   statusCheckInterval: 0
   faviconApi: allesedv
-  defaultIcon: ''
+  defaultIcon: ""
   routingMode: hash
   enableMultiTasking: false
   widgetsAlwaysUseProxy: false
@@ -50,21 +50,21 @@ appConfig:
   enableErrorReporting: false
 pageInfo:
   title: JamesBond Lab
-  description: ''
+  description: ""
   navLinks: []
-  footerText: ''
+  footerText: ""
 sections:
   - name: Developer Links
-    icon: ''
+    icon: ""
     items:
       - title: GitHub
-        description: ''
+        description: ""
         icon: fab fa-github
         url: https://github.com/introbond
         target: newtab
         id: 0_1479_github
       - title: Website
-        description: ''
+        description: ""
         icon: fas fa-browser
         url: https://thejb.onrender.com/
         target: newtab
@@ -149,7 +149,7 @@ sections:
         target: newtab
         id: 1_861_npm
   - name: Schedule Workers
-    icon: ''
+    icon: ""
     displayData:
       sortBy: default
       rows: 1
@@ -224,7 +224,7 @@ sections:
       hideForGuests: false
     items:
       - title: PG-Database
-        icon: ''
+        icon: ""
         url: http://192.168.11.61:5050/browser/
         target: newtab
         id: 0_144_pgdatabase

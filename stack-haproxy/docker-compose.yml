@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 services:
   haproxy:
     container_name: haproxy
@@ -13,7 +13,7 @@ services:
       - haproxy_net
     restart: always
     environment:
-      ENDPOINT: '${ENDPOINT}'
+      ENDPOINT: "${ENDPOINT}"
 networks:
   haproxy_net:
     name: haproxy_net

@@ -10,11 +10,11 @@ services:
       - "1080:80/tcp"
       - "1443:443/tcp"
     environment:
-      TZ: 'Asia/Bangkok'
+      TZ: "Asia/Bangkok"
       WEBPASSWORD: 1234
     volumes:
-      - '../data/etc-pihole:/etc/pihole'
-      - '../data/etc-dnsmasq.d:/etc/dnsmasq.d'
+      - "../data/etc-pihole:/etc/pihole"
+      - "../data/etc-dnsmasq.d:/etc/dnsmasq.d"
     dns:
       - 127.0.0.1
       - 1.1.1.1

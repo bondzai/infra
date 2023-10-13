@@ -1,5 +1,4 @@
 services:
-
   rabbitmq:
     image: rabbitmq:management
     hostname: rabbitmq

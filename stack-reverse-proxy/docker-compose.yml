@@ -1,4 +1,4 @@
-version: '3.4'
+version: "3.4"
 
 services:
   stackreverseproxy:
@@ -9,11 +9,11 @@ services:
     environment:
       NODE_ENV: production
 
-# docker-compose up --scale stackreverseproxy=3
+  # docker-compose up --scale stackreverseproxy=3
   nginx:
     image: nginx:latest
     volumes:
-    - ./conf.d:/etc/nginx/conf.d
+      - ./conf.d:/etc/nginx/conf.d
     depends_on:
       - stackreverseproxy
     ports:

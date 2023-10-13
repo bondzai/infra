@@ -1,9 +1,9 @@
 services:
   redis:
-      image: ${REDIS_IMAGE:-redis:7.0.8-alpine}
-      init: true
-      container_name: redis-con
-      hostname: redis
-      restart: always
-      ports:
-          - "${REDIS_PORT:-6379}:6379"
+    image: ${REDIS_IMAGE:-redis:7.0.8-alpine}
+    init: true
+    container_name: redis-con
+    hostname: redis
+    restart: always
+    ports:
+      - "${REDIS_PORT:-6379}:6379"

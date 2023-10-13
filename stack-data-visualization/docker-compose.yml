@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   grafana:
@@ -12,5 +12,5 @@ services:
       - backend
 
 networks:
-    backend:
-        driver: bridge
+  backend:
+    driver: bridge

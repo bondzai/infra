@@ -1,15 +1,14 @@
 services:
-
   heimdall:
     image: ${HEIMDALL_IMAGE:-lscr.io/linuxserver/heimdall:latest}
     container_name: heimdall-con
     hostname: heimdall
     restart: unless-stopped
     environment:
-    - PUID=1000
-    - PGID=1000
-    - TZ=Etc/UTC
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
     ports:
-    - 8180:80
+      - 8180:80
     volumes:
-    - ../data/heimdall/config:/config
+      - ../data/heimdall/config:/config

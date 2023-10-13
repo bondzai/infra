@@ -1,12 +1,12 @@
 services:
   pgadmin:
-      image: ${PGADMIN_IMAGE:-dpage/pgadmin4:latest}
-      init: true
-      container_name: pg-con
-      hostname: pg
-      restart: always
-      environment:
-          - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-admin@swd.dev}
-          - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-swd12345}
-      ports:
-          - ${PGADMIN_PORT:-5050}:80
+    image: ${PGADMIN_IMAGE:-dpage/pgadmin4:latest}
+    init: true
+    container_name: pg-con
+    hostname: pg
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-admin@swd.dev}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-swd12345}
+    ports:
+      - ${PGADMIN_PORT:-5050}:80

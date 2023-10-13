@@ -7,4 +7,3 @@ services:
       - 18000:8000
     volumes:
       - ../data/crontabs:/crontab-ui/crontabs
-      

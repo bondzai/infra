@@ -1,5 +1,4 @@
 services:
-
   traefik:
     image: "traefik:v2.10"
     container_name: "traefik"

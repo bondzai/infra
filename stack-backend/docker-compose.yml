@@ -1,55 +1,54 @@
 version: "3.8"
 
 services:
+  rabbitmq:
+    extends:
+      file: ../services/rabbitmq.yml
+      service: rabbitmq
+    networks:
+      - backend
 
-    rabbitmq:
-        extends:
-            file: ../services/rabbitmq.yml
-            service: rabbitmq
-        networks:
-            - backend
+  redis:
+    extends:
+      file: ../services/redis.yml
+      service: redis
+    networks:
+      - backend
 
-    redis:
-        extends:
-            file: ../services/redis.yml
-            service: redis
-        networks:
-            - backend
+  redisinsight:
+    extends:
+      file: ../services/redis-insight.yml
+      service: redisinsight
+    networks:
+      - backend
 
-    redisinsight:
-        extends:
-            file: ../services/redis-insight.yml
-            service: redisinsight
-        networks:
-            - backend
+  pgadmin:
+    extends:
+      file: ../services/pgadmin.yml
+      service: pgadmin
+    networks:
+      - backend
 
-    pgadmin:
-        extends:
-            file: ../services/pgadmin.yml
-            service: pgadmin
-        networks:
-            - backend
+  postgres:
+    extends:
+      file: ../services/postgres.yml
+      service: postgres
+    networks:
+      - backend
 
-    postgres:
-        extends:
-            file: ../services/postgres.yml
-            service: postgres
-        networks:
-            - backend
-
-    influx:
-        extends:
-            file: ../services/influx.yml
-            service: influx
-        volumes:
-            - ./data/influx_backup:/var/lib/influxdb
-            - .:/repo/
-        networks:
-            - backend
+  influx:
+    extends:
+      file: ../services/influx.yml
+      service: influx
+    volumes:
+      - ./data/influx_backup:/var/lib/influxdb
+      - .:/repo/
+    networks:
+      - backend
 
 volumes:
-    data:
-    redisinsight-data:
+  data:
+  redisinsight-data:
 networks:
-    backend:
-        driver: bridge
+  backend:
+    driver: bridge
