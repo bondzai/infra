@@ -1,0 +1,26 @@
+services:
+  crontab-ui:
+    image: alseambusher/crontab-ui:latest
+    container_name: crontab-ui
+    restart: always
+    ports:
+      - 18000:8000
+    volumes:
+      - ../data/crontabs:/crontab-ui/crontabs
+
+  uptime-kuma:
+    image: ${UPTIME_KUMA_IMAGE:-louislam/uptime-kuma:1}
+    container_name: uptime-kuma-con
+    hostname: uptime-kuma
+    volumes:
+      - ../data/uptime-kuma-data:/app/data
+    ports:
+      - 18001:3001
+    restart: always
+
+  watchtower:
+    image: containrrr/watchtower
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --cleanup --interval 30
