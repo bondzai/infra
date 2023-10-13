@@ -17,3 +17,6 @@ fi
 
 # Run Prettier to format both .yaml and .yml files in the current directory and its subdirectories.
 find "$root_directory" -type f \( -name "*.yaml" -o -name "*.yml" \) -exec prettier --write --config "$prettier_config" {} \;
+
+# Change file extensions from .yml to .yaml
+find "$root_directory" -type f -name "*.yml" -exec rename 's/\.yml$/.yaml/' {} \;
