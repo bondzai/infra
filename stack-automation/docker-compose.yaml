@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  ctfreak:
+    extends:
+      file: ../services/automation-tools.yaml
+      service: ctfreak
+
+  semaphore:
+    extends:
+      file: ../services/automation-tools.yaml
+      service: semaphore
