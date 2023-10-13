@@ -14,3 +14,8 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     restart: always
+
+  nginx:
+    image: ${NGINX_IMAGE:-nginx:latest}
+    ports:
+      - "${NGINX_PORT:-80}:80"
