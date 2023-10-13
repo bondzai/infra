@@ -20,3 +20,6 @@ find "$root_directory" -type f \( -name "*.yaml" -o -name "*.yml" \) -exec prett
 
 # Change file extensions from .yml to .yaml
 find "$root_directory" -type f -name "*.yml" -exec rename 's/\.yml$/.yaml/' {} \;
+
+# Add a newline character to the end of each file if it doesn't already have one.
+find "$root_directory" -type f \( -name "*.yaml" -o -name "*.yml" \) -exec sh -c '[[ $(tail -c 1 "$0" | wc -c) -ne 1 ]] && echo >> "$0"' {} \;
