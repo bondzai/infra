@@ -10,15 +10,16 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     ports:
-      - 8180:80
+      - "8180:80"
     volumes:
       - ../data/heimdall/config:/config
+
   dashy:
     image: ${DASHY_IMAGE:-lissy93/dashy:latest}
     hostname: dashy
     container_name: dashy-con
     ports:
-      - 8181:80
+      - "8181:80"
     environment:
       - NODE_ENV=production
     restart: always

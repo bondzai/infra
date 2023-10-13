@@ -4,7 +4,7 @@ services:
     container_name: crontab-ui
     restart: always
     ports:
-      - 18000:8000
+      - "18000:8000"
     volumes:
       - ../data/crontabs:/crontab-ui/crontabs
 
@@ -15,5 +15,5 @@ services:
     volumes:
       - ../data/uptime-kuma-data:/app/data
     ports:
-      - 18001:3001
+      - "18001:3001"
     restart: always

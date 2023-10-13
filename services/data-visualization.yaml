@@ -1,7 +1,6 @@
 version: "3"
 
 services:
-  # Datadog
   datadog:
     image: datadog/agent:latest
     environment:
@@ -14,7 +13,6 @@ services:
     networks:
       - monitoring
 
-  # Prometheus
   prometheus:
     image: prom/prometheus:latest
     ports:
@@ -26,7 +24,6 @@ services:
     networks:
       - monitoring
 
-  # Grafana
   grafana:
     image: grafana/grafana:latest
     ports:
@@ -37,7 +34,6 @@ services:
     networks:
       - monitoring
 
-  # New Relic
   newrelic:
     image: newrelic/infrastructure:latest
     environment:

@@ -3,9 +3,9 @@ services:
     image: jypsoftware/ctfreak
     container_name: ctfreak
     environment:
-      - TZ=Asia/Bangkok # Set timezone used to schedule your tasks
+      - TZ=Asia/Bangkok
     ports:
-      - 6700:6700
+      - "6700:6700"
     volumes:
-      - ./ctfreak-data:/data # Where to store all ctfreak data (logs, embedded database, config)
+      - ./ctfreak-data:/data
     restart: "unless-stopped"
