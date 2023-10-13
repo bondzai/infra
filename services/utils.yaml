@@ -17,10 +17,3 @@ services:
     ports:
       - 18001:3001
     restart: always
-
-  watchtower:
-    image: containrrr/watchtower
-    restart: always
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --cleanup --interval 30
