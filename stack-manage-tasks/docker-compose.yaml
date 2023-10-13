@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  ctfreak:
+    extends:
+      file: ../services/utils.yaml
+      service: ctfreak

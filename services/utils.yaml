@@ -1,23 +1,25 @@
 services:
   ctfreak:
     image: jypsoftware/ctfreak
-    container_name: ctfreak
-    environment:
-      - TZ=Asia/Bangkok
+    container_name: ctfreak-con
+    hostname: ctfreak
+    restart: always
+    volumes:
+      - ../data/ctfreak-data:/data
     ports:
       - "6700:6700"
-    volumes:
-      - ./ctfreak-data:/data
-    restart: "unless-stopped"
+    environment:
+      - TZ=Asia/Bangkok
 
   crontab-ui:
     image: alseambusher/crontab-ui:latest
-    container_name: crontab-ui
+    container_name: crontab-ui-con
+    hostname: crontab-ui
     restart: always
-    ports:
-      - "18000:8000"
     volumes:
       - ../data/crontabs:/crontab-ui/crontabs
+    ports:
+      - "18000:8000"
 
   uptime-kuma:
     image: ${UPTIME_KUMA_IMAGE:-louislam/uptime-kuma:1}
