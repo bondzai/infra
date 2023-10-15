@@ -1,0 +1,7 @@
+scripts:
+  1: {desc: "Update System", path: "./update_system.sh"}
+  2: {desc: "Backup Data", path: "./backup_data.sh"}
+  3: {desc: "Monitor System", path: "./monitor_system.sh"}
+  4: {desc: "Install App", path: "./install_app.sh"}
+  5: {desc: "Cleanup System", path: "./cleanup_system.sh"}
+  99: {desc: "Exit", path: "exit"}
