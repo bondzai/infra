@@ -16,6 +16,7 @@ load_config() {
 }
 
 render_menu() {
+    render_banner
     echo " TWEAK | FIXED | CLEANER | INSTALLER | OTHER "
     echo " ------------------------------------------- "
     for key in "${!menu_items[@]}"; do
@@ -39,8 +40,8 @@ handle_choice() {
 
 main() {
     load_config
+
     while true; do
-        render_banner
         render_menu
         read -p "Enter your choice: " choice
         handle_choice "$choice"
