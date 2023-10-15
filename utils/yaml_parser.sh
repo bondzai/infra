@@ -6,12 +6,6 @@ extract_simple_value() {
     awk -F: "/^$key:/ {print \$2}" "$file" | tr -d ' '
 }
 
-extract_list_values() {
-    local file="$1"
-    local key="$2"
-    awk -v key="$key" '$1 == key":" {flag=1; next} flag && /^- / {print $2; next} !/^- / {flag=0}' "$file"
-}
-
 extract_nested_value() {
     local file="$1"
     local parent="$2"
