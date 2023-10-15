@@ -2,41 +2,41 @@
 
 source "$(dirname $0)/utils/utils.sh"
 source "$(dirname $0)/components/banner.sh"
+CONFIG_PATH="$(dirname $0)/config/config.conf"
+
+load_config() {
+    declare -gA menu_items
+    while IFS="=" read -r key value; do
+        value="${value%\"}"
+        value="${value#\"}"
+        menu_items[$key]=$value
+    done < "$CONFIG_PATH"
+}
 
 render_menu() {
-    render
     echo " TWEAK | FIXED | CLEANER | INSTALLER | OTHER "
     echo " ------------------------------------------- "
     for key in "${!menu_items[@]}"; do
-        echo " [$key] | ${menu_items[$key]}"
+        local desc="${menu_items[$key]%%:*}"
+        echo " [$key] | $desc"
     done
 }
 
 handle_choice() {
     local choice=$1
-    case $choice in
-        1) ./update_system.sh ;;
-        2) ./backup_data.sh ;;
-        3) ./monitor_system.sh ;;
-        4) ./install_app.sh ;;
-        5) ./cleanup_system.sh ;;
-        99) exit ;;
-        *) echo "Invalid choice. Press Enter to continue." && read -s ;;
-    esac
+    local script="${menu_items[$choice]#*:}"
+    
+    if [[ $script == "exit" ]]; then
+        exit
+    elif [[ -n $script ]]; then
+        . "$script"
+    else
+        echo "Invalid choice. Press Enter to continue." && read -s
+    fi
 }
 
 main() {
-    declare -A menu_items
-    menu_items=(
-        [1]="Action Center & Notification"
-        [2]="Backup Data"
-        [3]="Monitor System"
-        [4]="Install App"
-        [5]="Cleanup System"
-        [101]="Brave (browser)"
-        [99]="Exit"
-    )
-
+    load_config
     while true; do
         render_menu
         read -p "Enter your choice: " choice
