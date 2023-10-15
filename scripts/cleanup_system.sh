@@ -2,4 +2,4 @@
 
 trash-empty
 
-echo "trash empty!"
+echo " => trash empty!"

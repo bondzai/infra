@@ -10,7 +10,7 @@ FOLLOW_ME="${CYAN}https://thejb.onrender.com"
 
 
 banner="\n
-${WHITE}==================================== \n
+${WHITE}=== Linux Infrastructure Toolbox === \n
 
 USER: $USER_NAME | MACHINE: $HOST_NAME \n
 OS: $OS_NAME \n
@@ -18,7 +18,7 @@ TIME ZONE: $TIMEZONE \n
 ABOUT ME: $FOLLOW_ME \n
 
 ${WHITE}==================================== \n
-${YELLOW}"
+${GREEN}"
 
 render_banner() {
     echo -e $banner
