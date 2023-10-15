@@ -1,0 +1,14 @@
+#!/bin/sh
+
+pre() {
+    sudo apt install build-essential git
+    sudo apt-get install libz-dev
+}
+
+install_homebrew() {
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+}
+
+pre
+install_homebrew
