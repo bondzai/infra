@@ -1,5 +1,3 @@
-# dependencies.list
-
 # Packages to be installed via package manager
 apt:
 - curl
