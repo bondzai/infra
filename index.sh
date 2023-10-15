@@ -2,7 +2,9 @@
 
 source "$(dirname $0)/utils/utils.sh"
 source "$(dirname $0)/components/banner.sh"
+
 CONFIG_PATH="$(dirname $0)/config/config.conf"
+SCRIPTS_PATH="$(dirname $0)/scripts"
 
 load_config() {
     declare -gA menu_items
@@ -28,16 +30,17 @@ handle_choice() {
     
     if [[ $script == "exit" ]]; then
         exit
-    elif [[ -n $script ]]; then
-        . "$script"
+    elif [[ -n $script && -f "$SCRIPTS_PATH/$script" ]]; then
+        . "$SCRIPTS_PATH/$script"
     else
-        echo "Invalid choice. Press Enter to continue." && read -s
+        echo "Invalid choice or script not found. Press Enter to continue." && read -s
     fi
 }
 
 main() {
     load_config
     while true; do
+        render_banner
         render_menu
         read -p "Enter your choice: " choice
         handle_choice "$choice"
