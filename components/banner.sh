@@ -6,7 +6,7 @@ OS_NAME=$(lsb_release -ds)
 TIMEZONE=$(timedatectl show --property=Timezone --value)
 FOLLOW_ME="https://thejb.onrender.com"
 
-render() {
+render_banner() {
     echo "==============================================================================="
     echo "  USER: $USER_NAME | COMPUTERNAME: $HOST_NAME"
     echo "  CURRENT OS:  $OS_NAME"
