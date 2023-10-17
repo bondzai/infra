@@ -33,14 +33,17 @@ services:
     ports:
       - ${PGADMIN_PORT:-5050}:80
 
-  mongodb:
+  mongo:
     image: mongo:latest
     init: true
-    container_name: mongodb-con
-    hostname: mongodb
+    container_name: mongo-con
+    hostname: mongo
     restart: always
     ports:
       - "${PORT:-27017}:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=jb
+      - MONGO_INITDB_ROOT_PASSWORD=jb12345
 
   mysql:
     image: mysql:latest
@@ -50,12 +53,13 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: tutorial
+      MYSQL_DATABASE: init
     ports:
       - "3306:3306"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
+    init: true
     container_name: phpmyadmin
     environment:
       PMA_HOST: mysql
