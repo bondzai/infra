@@ -46,7 +46,7 @@ main() {
     while true; do
         render_menu
         read -p " Enter your choice: " choice
-        echo -e " ----------------------------- "
+        echo
         handle_choice "$choice"
     done
 }
