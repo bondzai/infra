@@ -39,11 +39,11 @@ services:
     container_name: mongo-con
     hostname: mongo
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
     ports:
       - "${PORT:-27017}:27017"
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=jb
-      - MONGO_INITDB_ROOT_PASSWORD=jb12345
 
   mysql:
     image: mysql:latest
