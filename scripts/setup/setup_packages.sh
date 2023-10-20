@@ -24,3 +24,7 @@ setup_brave() {
 setup_network() {
     apt-get install -y net-tools iputils-ping
 }
+
+setup_zerotier() {
+    curl -s https://install.zerotier.com | sudo bash
+}
