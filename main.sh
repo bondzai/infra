@@ -26,16 +26,25 @@ render_menu() {
     clear
     render_banner
 
-    for key in "${!local_list[@]}"; do
-        local desc="${local_list[$key]%%:*}"
+    keys=("${!local_list[@]}")
+    IFS=$'\n' sorted_keys=($(sort -n <<< "${keys[*]}"))
 
-        if [[ $key != "0" ]]; then
+    for key in "${sorted_keys[@]}"; do
+        if [[ "$key" != "0" ]] && [[ "$key" != "99" ]]; then
+            local desc="${local_list[$key]%%:*}"
             echo " [$key] | $desc"
         fi
-
     done
+
+    if [[ -n "${local_list[99]}" ]]; then
+        echo " ===================================="
+        local desc="${local_list[99]%%:*}"
+        echo " [99]| $desc"
+    fi
+
     echo -e "${YELLOW}"
 }
+
 
 handle_choice() {
     local choice=$1
