@@ -4,7 +4,7 @@ source "$(dirname $0)/utils/utils.sh"
 source "$(dirname $0)/components/banner.sh"
 source "$(dirname $0)/components/styles.sh"
 
-CONFIG_PATH="$(dirname $0)/config/config.conf"
+CONFIG_PATH="$(dirname $0)/config/index.conf"
 SCRIPTS_PATH="$(dirname $0)/scripts"
 
 load_config() {
