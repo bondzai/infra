@@ -4,17 +4,8 @@ source "$(dirname $0)/utils/utils.sh"
 source "$(dirname $0)/components/banner.sh"
 source "$(dirname $0)/components/styles.sh"
 
-CONFIG_PATH="$(dirname $0)/config/index.conf"
+CONFIG_FILE="$(dirname $0)/config/index.conf"
 SCRIPTS_PATH="$(dirname $0)/scripts"
-
-load_config() {
-    declare -gA menu_items
-    while IFS="=" read -r key value; do
-        value="${value%\"}"
-        value="${value#\"}"
-        menu_items[$key]=$value
-    done < "$CONFIG_PATH"
-}
 
 render_menu() {
     render_banner
@@ -41,7 +32,9 @@ handle_choice() {
 }
 
 main() {
-    load_config
+    declare -A menu_items
+
+    load_config "$CONFIG_FILE" menu_items
 
     while true; do
         render_menu

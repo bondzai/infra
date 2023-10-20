@@ -29,3 +29,16 @@ check_version() {
         exit 1
     fi
 }
+
+load_config() {
+    local config_file="$1"
+    local -n config_dict="$2"
+
+    declare -gA config_dict
+
+    while IFS="=" read -r key value; do
+        value="${value%\"}"
+        value="${value#\"}"
+        config_dict[$key]=$value
+    done < "$config_file"
+}
