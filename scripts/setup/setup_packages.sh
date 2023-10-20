@@ -48,3 +48,8 @@ setup_protoc() {
 setup_nvm() {
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 }
+
+setup_gvm() {
+    sudo apt-get install curl git mercurial make binutils bison gcc build-essential -y
+    zsh < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+}
