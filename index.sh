@@ -3,17 +3,20 @@
 source "$(dirname $0)/utils/utils.sh"
 source "$(dirname $0)/components/banner.sh"
 source "$(dirname $0)/components/styles.sh"
+
 source "$(dirname $0)/scripts/setup/setup_packages.sh"
 source "$(dirname $0)/scripts/setup/main.sh"
 
-INDEX_LIST="$(dirname $0)/config/index.conf"
-PACKAGES_LIST="$(dirname $0)/config/packages.conf"
+source "$(dirname $0)/scripts/system/main.sh"
+source "$(dirname $0)/scripts/system/cmds.sh"
 
 declare -A index_list
 declare -A packages_list
+declare -A systems_list
 
-load_config $INDEX_LIST index_list
-load_config $PACKAGES_LIST packages_list
+load_config "$(dirname $0)/config/index.conf" index_list
+load_config "$(dirname $0)/config/packages.conf" packages_list
+load_config "$(dirname $0)/config/system.conf" systems_list
 
 current_menu="index_list"
 
@@ -47,14 +50,24 @@ handle_choice() {
                 current_menu="exit"
             elif [[ $value == "packages.conf" ]]; then
                 current_menu="packages_list"
+            elif [[ $value == "system.conf" ]]; then
+                current_menu="systems_list"
             fi
         ;;
         "packages.conf")
-            if [[ $value != "exit" ]]; then
+            if [[ $value == "exit" ]]; then
+                current_menu="index_list"
+            else
                 install_package $value
                 current_menu="packages_list"
-            else
+            fi
+        ;;
+        "system.conf")
+            if [[ $value == "exit" ]]; then
                 current_menu="index_list"
+            else
+                exec_system_cmd $value
+                current_menu="systems_list"
             fi
         ;;
     esac
