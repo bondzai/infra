@@ -18,7 +18,7 @@ TIME ZONE: $TIMEZONE \n
 ABOUT ME: $FOLLOW_ME \n
 
 ${WHITE}==================================== \n
-${GREEN}"
+${CYAN}"
 
 render_banner() {
     echo -e $banner
