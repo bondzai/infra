@@ -33,3 +33,4 @@ if ! add_zsh; then echo "Error installing zsh"; exit 1; fi
 if ! add_omzsh; then echo "Error installing Oh My Zsh"; exit 1; fi
 if ! add_plugin; then echo "Error adding plugins"; exit 1; fi
 if ! copy_config; then echo "Error copying config"; exit 1; fi
+curl -s https://ohmyposh.dev/install.sh | bash -s
