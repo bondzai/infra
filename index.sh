@@ -16,7 +16,9 @@ render_menu() {
 
     for key in "${!local_list[@]}"; do
         local desc="${local_list[$key]%%:*}"
-        echo " [$key] | $desc"
+        if [[ $key != "0" ]]; then
+            echo " [$key] | $desc"
+        fi
     done
     echo -e "${message}${YELLOW}"
 }
@@ -45,7 +47,6 @@ handle_choice() {
     return -1
 }
 
-
 main() {
     declare -A index_list
     declare -A packages_list
@@ -58,9 +59,10 @@ main() {
     while true; do
         read -p " Enter your choice: " choice
         
-        handle_choice "$choice" $current_menu        
+        handle_choice "$choice" $current_menu
+        
         case $? in
-            0 | 255)
+            0)
                 current_menu="index_list"
                 ;;
             1)
