@@ -11,6 +11,7 @@ Before using these scripts, make sure you have the following prerequisites insta
 1. Bash shell
 2. Standard Unix utilities (e.g., `sed`, `awk`)
 3. Superuser (root) privileges for certain operations
+4. run setup.sh before run main.sh
 
 ### Getting Started
 
