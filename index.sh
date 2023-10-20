@@ -52,7 +52,6 @@ handle_choice() {
         "packages.conf")
             if [[ $value != "exit" ]]; then
                 install_package $value
-                sleep 3
                 current_menu="packages_list"
             else
                 current_menu="index_list"
