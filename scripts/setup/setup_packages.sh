@@ -32,4 +32,10 @@ setup_zerotier() {
 setup_ssh_server() {
     sudo apt install openssh-server
     sudo service ssh status
+    eval "$(ssh-agent -s)"
+}
+
+setup_protoc() {
+    apt install -y protobuf-compiler
+    protoc --version  # Ensure compiler version is 3+
 }
