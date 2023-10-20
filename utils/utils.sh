@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function setup_deps {
+setup_deps() {
     echo
     echo -e ${GREEN}"Installing $1 ..."${WHITE}
     command -v $1 &> /dev/null && {
@@ -14,4 +14,18 @@ function setup_deps {
     echo
     sudo apt-get update
     sudo apt-get install $1 -y
+}
+
+check_os() {
+    echo -e "check distro..."
+}
+
+check_version() {
+    package_version=$(packge --version)
+    if [ $? -eq 0 ]; then
+        echo "$package installed successfully. Version: $packge_version"
+    else
+        echo "$package installation failed."
+        exit 1
+    fi
 }
