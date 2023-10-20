@@ -23,10 +23,9 @@ check_os() {
 check_version() {
     package_version=$(packge --version)
     if [ $? -eq 0 ]; then
-        echo "$package installed successfully. Version: $packge_version"
-    else
-        echo "$package installation failed."
-        exit 1
+        echo
+        echo -e ${GREEN}"$package installed successfully. Version: $packge_version"
+        echo
     fi
 }
 

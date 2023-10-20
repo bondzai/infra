@@ -58,7 +58,7 @@ handle_choice() {
             if [[ $value == "exit" ]]; then
                 current_menu="index_list"
             else
-                install_package $value
+                install_package $value $(check_version)
                 current_menu="packages_list"
             fi
         ;;
