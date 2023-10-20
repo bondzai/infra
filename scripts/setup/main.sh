@@ -1,6 +1,8 @@
 #!/bin/bash
 
 install_package() {
+    set -e
+
     local package=$1
     local check_version=$2
 
