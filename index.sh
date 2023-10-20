@@ -20,7 +20,7 @@ render_menu() {
             echo " [$key] | $desc"
         fi
     done
-    echo -e "${message}${YELLOW}"
+    echo -e "${YELLOW}"
 }
 
 handle_choice() {
@@ -29,22 +29,21 @@ handle_choice() {
 
     local value="${local_list[$choice]#*:}"
     local current_page="${local_list[0]#*:}"
-    
+
     case "$current_page" in
         "index.conf")
             if [[ $value == "exit" ]]; then
-                exit
+                echo "exit"
             elif [[ $value == "packages.conf" ]]; then
-                return 1
+                echo "packages_list"
             fi
         ;;
         "packages.conf")
             if [[ $value == "exit" ]]; then
-                return 0
+                echo "index_list"
             fi
         ;;
     esac
-    return -1
 }
 
 main() {
@@ -58,18 +57,10 @@ main() {
 
     while true; do
         read -p " Enter your choice: " choice
-        
-        handle_choice "$choice" $current_menu
-        
-        case $? in
-            0)
-                current_menu="index_list"
-                ;;
-            1)
-                current_menu="packages_list"
-                ;;
-        esac
-        
+        current_menu=$(handle_choice "$choice" $current_menu)
+        if [[ $current_menu == "exit" ]]; then
+            exit
+        fi
         render_menu $current_menu
     done
 }
