@@ -9,9 +9,16 @@ PACKAGES_LIST="$(dirname $0)/config/packages.conf"
 
 SCRIPTS_PATH="$(dirname $0)/scripts"
 
+declare -A index_list
+declare -A packages_list
+
+load_config $INDEX_LIST index_list
+load_config $PACKAGES_LIST packages_list
+
 render_menu() {
     declare -n local_list=$1
 
+    clear
     render_banner
 
     for key in "${!local_list[@]}"; do
@@ -47,11 +54,6 @@ handle_choice() {
 }
 
 main() {
-    declare -A index_list
-    declare -A packages_list
-    load_config $INDEX_LIST index_list
-    load_config $PACKAGES_LIST packages_list
-
     current_menu="index_list"
     render_menu $current_menu
 
