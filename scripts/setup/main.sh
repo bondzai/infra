@@ -1,4 +1,5 @@
 #!/bin/bash
+
 install_package() {
     local package=$1
 
