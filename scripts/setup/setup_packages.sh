@@ -28,3 +28,8 @@ setup_network() {
 setup_zerotier() {
     curl -s https://install.zerotier.com | sudo bash
 }
+
+setup_ssh_server() {
+    sudo apt install openssh-server
+    sudo service ssh status
+}
