@@ -1,13 +1,13 @@
 #!/bin/bash
-source "$(dirname $0)/../../config/packages.sh"
+install_package() {
+    local package=$1
 
-
-for package in "${packages[@]}"; do
     if declare -f "setup_$package" >/dev/null; then
-        echo -e "start setup $package."
+        echo -e " ===== start installing $package... ====="
         "setup_$package"
-        echo -e "setup $package successfully."
+        echo
+        echo -e ${YELLOW}" ===== end installing $package... ====="
     else
-        echo "Package '$package' is not supported."
+        echo -e ${RED}"Package '$package' is not supported."
     fi
-done
+}
