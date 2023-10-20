@@ -16,7 +16,7 @@ Before using these scripts, make sure you have the following prerequisites insta
 
 1. Clone this repository to your Linux system:
 
-git clone https://github.com/your-username/linux-infra-tools.git
+git clone https://github.com/introbond/linux-infra-tools.git
 cd linux-infra-tools
 
 2. Make the main script executable:
