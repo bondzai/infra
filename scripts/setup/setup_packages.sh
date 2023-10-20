@@ -1,6 +1,7 @@
 #!/bin/bash
+
 setup_docker() {
-    echo -e "setup docker..."
+    sudo apt install docker.io
 }
 
 setup_k8s() {
@@ -27,7 +28,7 @@ setup_brave() {
 }
 
 setup_network() {
-    apt-get install -y net-tools iputils-ping
+    sudo apt install -y net-tools iputils-ping
 }
 
 setup_zerotier() {
