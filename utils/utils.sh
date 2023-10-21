@@ -10,9 +10,7 @@ trap handle_error ERR
 
 shutdown_service() {
     sleep 0.5
-    echo
-    echo -e $WHITE" Keep calm & farming..."$DEFAULT
-    echo
+    pprint info "Keep calm & farming..."
     exit 0
 }
 
@@ -112,4 +110,26 @@ validate_is_exists() {
         read _
         return 1
     fi
+}
+
+pprint() {
+    local type=$1
+    local message=$2
+
+    case $type in
+    DEFAULT)
+        echo -e $WHITE
+        ;;
+
+    error | warning)
+        echo -e $RED
+        ;;
+
+    *)
+        echo -e $DEFAULT
+        ;;
+    esac
+
+    echo -e $message
+    echo -e $DEFAULT
 }
