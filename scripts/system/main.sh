@@ -8,7 +8,7 @@ exec_system_cmd() {
         echo
         "exec_$cmd"
         echo
-        echo -e ${YELLOW}" ===== end executing $cmd... ====="
+        echo -e ${CYAN}" ===== end executing $cmd... ====="
     else
         echo -e ${RED}"Command '$cmd' is not supported."
     fi
