@@ -68,24 +68,24 @@ handle_choice() {
 
     case $menu in
         "index_menu")
-            if [[ $selected_choice_index -eq 99 ]]; then
-                menu="exit"
-            else
+            if [[ $selected_choice_index -ne 99 ]]; then
                 menu="$selected_choice_value"
+            else
+                menu="exit"
             fi
             ;;
         "packages_menu")
-            if [[ $selected_choice_index -eq 99 ]]; then
-                menu="index_menu"
-            else
+            if [[ $selected_choice_index -ne 99 ]]; then
                 install_package $selected_choice_value $(check_version)
+            else
+                menu="index_menu"
             fi
             ;;
         "system_menu")
-            if [[ $selected_choice_index -eq 99 ]]; then
-                menu="index_menu"
-            else
+            if [[ $selected_choice_index -ne 99 ]]; then
                 exec_system_cmd $selected_choice_value
+            else
+                menu="index_menu"
             fi
             ;;
     esac
