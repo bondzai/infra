@@ -1,6 +1,6 @@
 # linux-infra-tools
 
-**linux-infra-tools** or Linux Infrastructure Toolbox is a collection of Bash scripts for Unix/Linux machines. This repository provides a simple and interactive menu-driven interface for performing these tasks. The scripts are designed to make it easier to handle common Linux infrastructure tasks efficiently.
+This repository provides a collection of **Bash scripts for Unix/Linux** machines. It's designed to handle common infrastructure tasks efficiently. 
 
 ## Usage
 
@@ -11,17 +11,12 @@ Before using these scripts, make sure you have the following prerequisites insta
 1. Bash shell
 2. Standard Unix utilities (e.g., `sed`, `awk`)
 3. Superuser (root) privileges for certain operations
-4. run setup.sh before run main.sh
 
 ### Getting Started
 
-1. Clone this repository to your Linux system: git clone https://github.com/introbond/linux-infra-tools.git
-cd linux-infra-tools
-
-2. Make the main script executable: chmod +x main.sh
-
-3. Execute the main script: ./main.sh
-
+1. Clone this repository: "git clone https://github.com/introbond/linux-infra-tools.git"
+2. Make the main.sh and setup.sh executable: "chmod +x main.sh setup.sh"
+3. Execute the main script: "./main.sh"
 4. You will be presented with a menu-driven interface that allows you to perform various system administration tasks.
 
 You can customize these configuration files to add, modify, or remove options as needed.
