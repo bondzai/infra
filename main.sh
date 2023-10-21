@@ -42,7 +42,7 @@ render_menu() {
         fi
     done
 
-    echo -e "${CYAN}"
+    echo -e "${MAGENTA}"
 }
 
 handle_choice() {
