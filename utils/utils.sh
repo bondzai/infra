@@ -1,5 +1,13 @@
 #!/bin/bash
 
+handle_error() {
+    local err=$?
+    echo "Error occurred in function ${FUNCNAME[1]} at line ${BASH_LINENO[0]} with exit code $err."
+    exit $err
+}
+
+trap handle_error ERR
+
 setup_deps() {
     echo
     echo -e ${GREEN}"Installing $1 ..."${WHITE}
@@ -21,13 +29,24 @@ check_os() {
 }
 
 check_version() {
-    package_version=$(packge --version)
+    local cmd_version_flag="--version"
+
+    case $package in
+        some_package_name) cmd_version_flag="-v";;
+        another_package_name) cmd_version_flag="version";;
+    esac
+
+    package_version=$($package $cmd_version_flag 2>&1)
+
     if [ $? -eq 0 ]; then
         echo
-        echo -e ${GREEN}"$package installed successfully. Version: $packge_version"
+        echo -e ${GREEN}"$package installed successfully. Version: $package_version"
         echo
+    else
+        echo -e ${RED}"Error checking version for $package using $cmd_version_flag"
     fi
 }
+
 
 extract_digits() {
     local str="$1"
@@ -49,7 +68,6 @@ exclude_key_digits() {
     echo "$str" | sed 's/[0-9]\+//'
 }
 
-# yaml parser
 extract_dict_from_yaml() {
     local input_yaml_file=$1
     local -n result_dict=$2
