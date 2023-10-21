@@ -1,6 +1,6 @@
 # linux-infra-tools
 
-**linux-infra-tools** is a collection of Bash scripts for managing Linux system administration tasks, including package installation and system command execution. This repository provides a simple and interactive menu-driven interface for performing these tasks. The scripts are designed to make it easier to handle common Linux infrastructure tasks efficiently.
+**linux-infra-tools** or Linux Infrastructure Toolbox is a collection of Bash scripts for Unix/Linux machines. This repository provides a simple and interactive menu-driven interface for performing these tasks. The scripts are designed to make it easier to handle common Linux infrastructure tasks efficiently.
 
 ## Usage
 
@@ -15,35 +15,14 @@ Before using these scripts, make sure you have the following prerequisites insta
 
 ### Getting Started
 
-1. Clone this repository to your Linux system:
-
-git clone https://github.com/introbond/linux-infra-tools.git
+1. Clone this repository to your Linux system: git clone https://github.com/introbond/linux-infra-tools.git
 cd linux-infra-tools
 
-2. Make the main script executable:
-chmod +x main.sh
+2. Make the main script executable: chmod +x main.sh
 
-3. Execute the main script:
-./main.sh
-
+3. Execute the main script: ./main.sh
 
 4. You will be presented with a menu-driven interface that allows you to perform various system administration tasks.
-
-### Menu Options
-
-- **Index Menu**: Navigate the main menu, which provides options to access other menus.
-
-- **Packages Menu**: Install and manage packages using package names from the configuration file `packages.conf`.
-
-- **System Menu**: Execute various system commands specified in the configuration file `system.conf`.
-
-### Configuration
-
-The repository includes several configuration files located in the `config/` directory:
-
-- `index.conf`: Contains menu options and navigation instructions.
-- `packages.conf`: Lists the packages that can be installed.
-- `system.conf`: Specifies the system commands that can be executed.
 
 You can customize these configuration files to add, modify, or remove options as needed.
 
