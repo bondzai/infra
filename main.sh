@@ -46,10 +46,14 @@ render_menu() {
 }
 
 handle_choice() {
+    set -e
+
     local selected_choice_index=$1
     declare -n local_list=$2
 
-    validate_is_number $selected_choice_index
+    if ! validate_is_number $selected_choice_index; then
+        return
+    fi
 
     local choice_found=false
     for selected_choice_key in "${!local_list[@]}"; do
@@ -60,7 +64,9 @@ handle_choice() {
         fi
     done
 
-    validate_is_exists $choice_found
+    if ! validate_is_exists $choice_found; then
+        return
+    fi
 
     case $menu in
         "index_menu")
