@@ -1,8 +1,6 @@
 #!/bin/bash
 
 install_package() {
-    set -e
-
     local package=$1
     local check_version=$2
 
@@ -11,7 +9,7 @@ install_package() {
         echo
         "setup_$package"
         echo
-        echo -e ${YELLOW}" ===== end installing $package... ====="
+        echo -e ${GREEN}" ===== end installing $package... ====="
     else
         echo -e ${RED}"Package '$package' is not supported."
     fi
@@ -19,7 +17,7 @@ install_package() {
     sleep 0.5
     check_version $package
     sleep 0.5
-    
+    echo
     echo "Press ENTER to continue..."
     read _
 }
