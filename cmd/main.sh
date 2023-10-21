@@ -27,18 +27,18 @@ load_configs() {
 menu="index_menu"
 
 handle_choice() {
-    local selected_choice_index=$1
-    if ! validate_is_number $selected_choice_index; then
+    local choice_index=$1
+    if ! validate_is_number $choice_index; then
         return
     fi
 
     declare -n local_list=$2
     local choice_found=false
 
-    for selected_choice_key in "${!local_list[@]}"; do
-        if [[ "$selected_choice_key" == "$selected_choice_index"* ]]; then
+    for choice_key in "${!local_list[@]}"; do
+        if [[ "$choice_key" == "$choice_index"* ]]; then
             choice_found=true
-            local selected_choice_value="${local_list[$selected_choice_key]}"
+            local choice_value="${local_list[$choice_key]}"
             break
         fi
     done
@@ -49,22 +49,22 @@ handle_choice() {
 
     case $menu in
         "index_menu")
-            if [[ $selected_choice_index -ne EXIT_CHOICE ]]; then
-                menu="$selected_choice_value"
+            if [[ $choice_index -ne EXIT_CHOICE ]]; then
+                menu="$choice_value"
             else
                 menu="exit"
             fi
             ;;
         "packages_menu")
-            if [[ $selected_choice_index -ne EXIT_CHOICE ]]; then
-                install_package $selected_choice_value $(check_version)
+            if [[ $choice_index -ne EXIT_CHOICE ]]; then
+                install_package $choice_value $(check_version)
             else
                 menu="index_menu"
             fi
             ;;
         "system_menu")
-            if [[ $selected_choice_index -ne EXIT_CHOICE ]]; then
-                exec_system_cmd $selected_choice_value
+            if [[ $choice_index -ne EXIT_CHOICE ]]; then
+                exec_system_cmd $choice_value
             else
                 menu="index_menu"
             fi
