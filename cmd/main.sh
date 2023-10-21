@@ -18,9 +18,11 @@ declare -A index_menu
 declare -A packages_menu
 declare -A system_menu
 
-extract_dict_from_yaml "${CONFIG_DIR}/index.yaml" index_menu
-extract_dict_from_yaml "${CONFIG_DIR}/packages.yaml" packages_menu
-extract_dict_from_yaml "${CONFIG_DIR}/system.yaml" system_menu
+load_configs() {
+    extract_dict_from_yaml "${CONFIG_DIR}/index.yaml" index_menu
+    extract_dict_from_yaml "${CONFIG_DIR}/packages.yaml" packages_menu
+    extract_dict_from_yaml "${CONFIG_DIR}/system.yaml" system_menu
+}
 
 menu="index_menu"
 
@@ -71,8 +73,11 @@ handle_choice() {
 }
 
 main() {
-    render_menu $menu
+    load_configs
+    
     while true; do
+        render_menu $menu
+
         read -p " Enter your choice: " choice
         handle_choice $choice $menu
 
@@ -80,7 +85,6 @@ main() {
             render_falldown
         fi
 
-        render_menu $menu
     done
 }
 
