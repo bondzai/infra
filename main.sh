@@ -49,13 +49,7 @@ handle_choice() {
     local selected_choice_index=$1
     declare -n local_list=$2
 
-    if ! [[ "$selected_choice_index" =~ ^[0-9]+$ ]]; then
-        echo "Error: choice index is not numeric. Select a valid choice."
-        echo "Press ENTER to continue..."
-        read _
-        sleep 0.5
-        return 1
-    fi
+    validate_is_number $selected_choice_index
 
     local choice_found=false
     for selected_choice_key in "${!local_list[@]}"; do
@@ -66,13 +60,7 @@ handle_choice() {
         fi
     done
 
-    if [[ "$choice_found" == "false" ]]; then
-        echo "Error: choice index not found in the list. Select a valid choice."
-        echo "Press ENTER to continue..."
-        read _
-        sleep 0.5
-        return 1
-    fi
+    validate_is_exists $choice_found
 
     case $menu in
         "index_menu")

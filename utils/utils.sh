@@ -64,3 +64,25 @@ extract_dict_from_yaml() {
         return 1
     fi
 }
+
+validate_is_number() {
+    local input=$1
+    if ! [[ "$input" =~ ^[0-9]+$ ]]; then
+        echo "Error: choice index is not numeric. Select a valid choice."
+        echo "Press ENTER to continue..."
+        read _
+        sleep 0.5
+        return 1
+    fi
+}
+
+validate_is_exists() {
+    local input=$1
+    if [[ "$input" == "false" ]]; then
+        echo "Error: choice index not found in the list. Select a valid choice."
+        echo "Press ENTER to continue..."
+        read _
+        sleep 0.5
+        return 1
+    fi
+}
