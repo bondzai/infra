@@ -3,16 +3,16 @@
 BASE_DIR="$(dirname $0)/.."
 CONFIG_DIR="${BASE_DIR}/config"
 COMPONENTS_DIR="${BASE_DIR}/components"
-SCRIPTS_DIR="${BASE_DIR}/scripts"
+CONTROLLERS_DIR="${BASE_DIR}/controllers"
 UTILS_DIR="${BASE_DIR}/utils"
 
 source "${CONFIG_DIR}/constants.sh"
 source "${COMPONENTS_DIR}/global.sh"
 source "${UTILS_DIR}/utils.sh"
-source "${SCRIPTS_DIR}/system/cmds.sh"
-source "${SCRIPTS_DIR}/system/main.sh"
-source "${SCRIPTS_DIR}/setup/packages.sh"
-source "${SCRIPTS_DIR}/setup/main.sh"
+source "${CONTROLLERS_DIR}/system/cmds.sh"
+source "${CONTROLLERS_DIR}/system/main.sh"
+source "${CONTROLLERS_DIR}/setup/packages.sh"
+source "${CONTROLLERS_DIR}/setup/main.sh"
 
 declare -A index_menu
 declare -A packages_menu
