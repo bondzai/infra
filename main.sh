@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source "$(dirname $0)/utils/utils.sh"
-source "$(dirname $0)/components/banner.sh"
+source "$(dirname $0)/components/global.sh"
 source "$(dirname $0)/components/styles.sh"
 
 source "$(dirname $0)/scripts/setup/setup_packages.sh"
@@ -10,15 +10,17 @@ source "$(dirname $0)/scripts/setup/main.sh"
 source "$(dirname $0)/scripts/system/main.sh"
 source "$(dirname $0)/scripts/system/cmds.sh"
 
-declare -A index_list
-declare -A packages_list
-declare -A systems_list
+source "$(dirname $0)/config/constants.sh"
 
-load_config "$(dirname $0)/config/index.conf" index_list
-load_config "$(dirname $0)/config/packages.conf" packages_list
-load_config "$(dirname $0)/config/system.conf" systems_list
+declare -A index_menu
+declare -A packages_menu
+declare -A system_menu
 
-current_menu="index_list"
+extract_dict_from_yaml "$(dirname $0)/config/index.yaml" index_menu
+extract_dict_from_yaml "$(dirname $0)/config/packages.yaml" packages_menu
+extract_dict_from_yaml "$(dirname $0)/config/system.yaml" system_menu
+
+menu="index_menu"
 
 render_menu() {
     declare -n local_list=$1
@@ -30,70 +32,84 @@ render_menu() {
     IFS=$'\n' sorted_keys=($(sort -n <<< "${keys[*]}"))
 
     for key in "${sorted_keys[@]}"; do
-        if [[ "$key" != "0" ]] && [[ "$key" != "99" ]]; then
-            local desc="${local_list[$key]%%:*}"
-            echo " [$key] | $desc"
+        index=$(extract_key_digits "$key")
+        desc=$(exclude_key_digits "$key")
+
+        if [[ $index == 0 ]]; then
+            echo " ========= $desc ========="
+        else
+            echo " [$index] | $desc"
         fi
     done
 
-    if [[ -n "${local_list[99]}" ]]; then
-        echo " ===================================="
-        local desc="${local_list[99]%%:*}"
-        echo " [99]| $desc"
-    fi
-
-    echo -e "${YELLOW}"
+    echo -e "${CYAN}"
 }
 
-
 handle_choice() {
-    local choice=$1
+    local selected_choice_index=$1
     declare -n local_list=$2
 
-    local value="${local_list[$choice]#*:}"
-    local current_page="${local_list[0]#*:}"
+    if ! [[ "$selected_choice_index" =~ ^[0-9]+$ ]]; then
+        echo "Error: choice index is not numeric. Select a valid choice."
+        echo "Press ENTER to continue..."
+        read _
+        sleep 0.5
+        return 1
+    fi
 
-    case "$current_page" in
-        "index.conf")
-            if [[ $value == "exit" ]]; then
-                current_menu="exit"
-            elif [[ $value == "packages.conf" ]]; then
-                current_menu="packages_list"
-            elif [[ $value == "system.conf" ]]; then
-                current_menu="systems_list"
-            fi
-        ;;
-        "packages.conf")
-            if [[ $value == "exit" ]]; then
-                current_menu="index_list"
+    local choice_found=false
+    for selected_choice_key in "${!local_list[@]}"; do
+        if [[ "$selected_choice_key" == "$selected_choice_index"* ]]; then
+            choice_found=true
+            local selected_choice_value="${local_list[$selected_choice_key]}"
+            break
+        fi
+    done
+
+    if [[ "$choice_found" == "false" ]]; then
+        echo "Error: choice index not found in the list. Select a valid choice."
+        echo "Press ENTER to continue..."
+        read _
+        sleep 0.5
+        return 1
+    fi
+
+    case $menu in
+        "index_menu")
+            if [[ "$selected_choice_index" == "99" ]]; then
+                menu="exit"
             else
-                install_package $value $(check_version)
-                current_menu="packages_list"
+                menu="$selected_choice_value"
             fi
-        ;;
-        "system.conf")
-            if [[ $value == "exit" ]]; then
-                current_menu="index_list"
+            ;;
+        "packages_menu")
+            if [[ "$selected_choice_index" == "99" ]]; then
+                menu="index_menu"
             else
-                exec_system_cmd $value
-                current_menu="systems_list"
+                install_package $selected_choice_value $(check_version)
             fi
-        ;;
+            ;;
+        "system_menu")
+            if [[ "$selected_choice_index" == "99" ]]; then
+                menu="index_menu"
+            else
+                exec_system_cmd $selected_choice_value
+            fi
+            ;;
     esac
 }
 
 main() {
-    render_menu $current_menu
-
+    render_menu $menu
     while true; do
         read -p " Enter your choice: " choice
-        handle_choice "$choice" $current_menu
+        handle_choice $choice $menu
 
-        if [[ $current_menu == "exit" ]]; then
+        if [[ $menu == "exit" ]]; then
             exit
         fi
 
-        render_menu $current_menu
+        render_menu $menu
     done
 }
 

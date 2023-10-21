@@ -29,49 +29,38 @@ check_version() {
     fi
 }
 
-load_config() {
-    local config_file="$1"
-    local -n config_dict="$2"
+extract_digits() {
+    local str="$1"
+    echo "$str" | grep -o -E '[0-9]+' | tr -d '\n'
+}
 
-    declare -gA config_dict
+extract_key_digits() {
+    local str="$1"
+    echo "$str" | grep -o -E '[0-9]+' | head -1
+}
 
-    while IFS="=" read -r key value; do
-        value="${value%\"}"
-        value="${value#\"}"
-        config_dict[$key]=$value
-    done < "$config_file"
+exclude_digits() {
+    local str="$1"
+    echo "$str" | sed 's/[0-9]//g'
+}
+
+exclude_key_digits() {
+    local str="$1"
+    echo "$str" | sed 's/[0-9]\+//'
 }
 
 # yaml parser
-extract_yaml_simple_value() {
-    local file="$1"
-    local key="$2"
-    awk -F: "/^$key:/ {print \$2}" "$file" | tr -d ' '
-}
-
-# yaml parser
-extract_yaml_nested_value() {
-    local file="$1"
-    local parent="$2"
-    local key="$3"
-    awk -v parent="$parent" -v key="$key" '$1 == parent":" {flag=1; next} flag && $1 == key":" {print $2; next} $1 !~ /^  / {flag=0}' "$file" | tr -d ' '
-}
-
 extract_dict_from_yaml() {
     local input_yaml_file=$1
     local -n result_dict=$2
 
-    while IFS=": " read -r yaml_key yaml_value
-    do
-        result_dict["$yaml_key"]="$yaml_value"
-    done < "$input_yaml_file"
+    if [[ -n "${REGEX_DICT[": "]}" ]]; then
+        while IFS="=" read -r yaml_key yaml_value
+        do
+            result_dict["$yaml_key"]="$yaml_value"
+        done < <(eval "${REGEX_DICT[": "]}" "$input_yaml_file")
+    else
+        echo "Format not found"
+        return 1
+    fi
 }
-
-declare -A yaml_contents
-
-extract_dict_from_yaml "input.yaml" yaml_contents
-
-echo "${yaml_contents[@]}"
-echo "${!yaml_contents[@]}"
-echo "${yaml_contents[index]}"
-echo "${yaml_contents[-1]}"
