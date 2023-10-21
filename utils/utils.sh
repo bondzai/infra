@@ -56,3 +56,22 @@ extract_yaml_nested_value() {
     local key="$3"
     awk -v parent="$parent" -v key="$key" '$1 == parent":" {flag=1; next} flag && $1 == key":" {print $2; next} $1 !~ /^  / {flag=0}' "$file" | tr -d ' '
 }
+
+extract_dict_from_yaml() {
+    local input_yaml_file=$1
+    local -n result_dict=$2
+
+    while IFS=": " read -r yaml_key yaml_value
+    do
+        result_dict["$yaml_key"]="$yaml_value"
+    done < "$input_yaml_file"
+}
+
+declare -A yaml_contents
+
+extract_dict_from_yaml "input.yaml" yaml_contents
+
+echo "${yaml_contents[@]}"
+echo "${!yaml_contents[@]}"
+echo "${yaml_contents[index]}"
+echo "${yaml_contents[-1]}"
