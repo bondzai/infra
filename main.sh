@@ -46,16 +46,14 @@ render_menu() {
 }
 
 handle_choice() {
-    set -e
-
     local selected_choice_index=$1
-    declare -n local_list=$2
-
     if ! validate_is_number $selected_choice_index; then
         return
     fi
 
+    declare -n local_list=$2
     local choice_found=false
+
     for selected_choice_key in "${!local_list[@]}"; do
         if [[ "$selected_choice_key" == "$selected_choice_index"* ]]; then
             choice_found=true
@@ -100,6 +98,9 @@ main() {
         handle_choice $choice $menu
 
         if [[ $menu == "exit" ]]; then
+            sleep 0.5
+            echo
+            echo " Keep calm & farming..."
             exit
         fi
 
