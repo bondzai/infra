@@ -1,22 +1,26 @@
 #!/bin/bash
 
-source "$(dirname $0)/../components/global.sh"
-source "$(dirname $0)/../config/constants.sh"
-source "$(dirname $0)/../utils/utils.sh"
+BASE_DIR="$(dirname $0)/.."
+CONFIG_DIR="${BASE_DIR}/config"
+COMPONENTS_DIR="${BASE_DIR}/components"
+SCRIPTS_DIR="${BASE_DIR}/scripts"
+UTILS_DIR="${BASE_DIR}/utils"
 
-source "$(dirname $0)/../scripts/setup/packages.sh"
-source "$(dirname $0)/../scripts/setup/main.sh"
-
-source "$(dirname $0)/../scripts/system/cmds.sh"
-source "$(dirname $0)/../scripts/system/main.sh"
+source "${CONFIG_DIR}/constants.sh"
+source "${COMPONENTS_DIR}/global.sh"
+source "${UTILS_DIR}/utils.sh"
+source "${SCRIPTS_DIR}/system/cmds.sh"
+source "${SCRIPTS_DIR}/system/main.sh"
+source "${SCRIPTS_DIR}/setup/packages.sh"
+source "${SCRIPTS_DIR}/setup/main.sh"
 
 declare -A index_menu
 declare -A packages_menu
 declare -A system_menu
 
-extract_dict_from_yaml "$(dirname $0)/../config/index.yaml" index_menu
-extract_dict_from_yaml "$(dirname $0)/../config/packages.yaml" packages_menu
-extract_dict_from_yaml "$(dirname $0)/../config/system.yaml" system_menu
+extract_dict_from_yaml "${CONFIG_DIR}/index.yaml" index_menu
+extract_dict_from_yaml "${CONFIG_DIR}/packages.yaml" packages_menu
+extract_dict_from_yaml "${CONFIG_DIR}/system.yaml" system_menu
 
 menu="index_menu"
 
@@ -43,21 +47,21 @@ handle_choice() {
 
     case $menu in
         "index_menu")
-            if [[ $selected_choice_index -ne 99 ]]; then
+            if [[ $selected_choice_index -ne EXIT_CHOICE ]]; then
                 menu="$selected_choice_value"
             else
                 menu="exit"
             fi
             ;;
         "packages_menu")
-            if [[ $selected_choice_index -ne 99 ]]; then
+            if [[ $selected_choice_index -ne EXIT_CHOICE ]]; then
                 install_package $selected_choice_value $(check_version)
             else
                 menu="index_menu"
             fi
             ;;
         "system_menu")
-            if [[ $selected_choice_index -ne 99 ]]; then
+            if [[ $selected_choice_index -ne EXIT_CHOICE ]]; then
                 exec_system_cmd $selected_choice_value
             else
                 menu="index_menu"
