@@ -1,4 +1,5 @@
 0 SYSTEM MENU: system_menu
 1 Update system: update
 2 Cleanup system: cleanup
+3 Check network status & test speed: check_network_status
 99 Back to main menu: exit
