@@ -17,7 +17,7 @@
 Contributions to this repository are welcome. If you have ideas for improving or extending these infrastructure tools, please submit a pull request.
 
 ## License
-This repository is licensed under the MIT License. See the [LICENSE.md](LICENSE) file for more details.
+This repository is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for more details.
 
 ## Disclaimer
 Use these tools responsibly and with caution. Some operations may require superuser privileges and can affect the stability and security of your Linux system. It is recommended to have backups and test these scripts in a safe environment before using them in a production setting. The repository maintainers are not responsible for any issues or data loss caused by the use of these scripts.
