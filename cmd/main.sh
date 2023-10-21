@@ -1,15 +1,14 @@
 #!/bin/bash
 
-source "$(dirname $0)/../utils/utils.sh"
 source "$(dirname $0)/../components/global.sh"
+source "$(dirname $0)/../config/constants.sh"
+source "$(dirname $0)/../utils/utils.sh"
 
 source "$(dirname $0)/../scripts/setup/packages.sh"
 source "$(dirname $0)/../scripts/setup/main.sh"
 
-source "$(dirname $0)/../scripts/system/main.sh"
 source "$(dirname $0)/../scripts/system/cmds.sh"
-
-source "$(dirname $0)/../config/constants.sh"
+source "$(dirname $0)/../scripts/system/main.sh"
 
 declare -A index_menu
 declare -A packages_menu
