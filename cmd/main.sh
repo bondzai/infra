@@ -82,7 +82,7 @@ main() {
         handle_choice $choice $menu
 
         if [[ $menu == "exit" ]]; then
-            render_falldown
+            shutdown_service
         fi
 
     done

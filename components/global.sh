@@ -57,11 +57,3 @@ render_menu() {
 
     echo -e "${CYAN}"
 }
-
-render_falldown() {
-    sleep 0.5
-    echo
-    echo -e $WHITE" Keep calm & farming..."
-    echo
-    exit
-}

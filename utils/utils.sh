@@ -8,6 +8,14 @@ handle_error() {
 
 trap handle_error ERR
 
+shutdown_service() {
+    sleep 0.5
+    echo
+    echo -e $WHITE" Keep calm & farming..."$DEFAULT
+    echo
+    exit 0
+}
+
 setup_deps() {
     echo
     echo -e ${GREEN}"Installing $1 ..."${WHITE}
