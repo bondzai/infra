@@ -5,7 +5,7 @@
 ## Usage
 ### Prerequisites
 1. Clone this repository: "git clone https://github.com/introbond/linux-infra-tools.git"
-2. Make the main.sh and setup.sh executable: "chmod +x main.sh setup.sh"
+2. Make the main.sh and setup.sh executable: "chmod +x main.sh setup.sh" (Both are stored in cmd directory)
 3. Execute the setup script: "./setup.sh"
 
 ### Getting Started
