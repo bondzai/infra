@@ -28,7 +28,7 @@ setup_brave() {
 }
 
 setup_network() {
-    sudo apt install -y net-tools iputils-ping
+    sudo apt update && sudo apt install -y net-tools iputils-ping speedtest-cli
 }
 
 setup_zerotier() {
