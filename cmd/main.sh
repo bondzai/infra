@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BASE_DIR="$(dirname $0)/.."
-CONFIG_DIR="${BASE_DIR}/config"
+CONFIG_DIR="${BASE_DIR}/configs"
 COMPONENTS_DIR="${BASE_DIR}/components"
 CONTROLLERS_DIR="${BASE_DIR}/controllers"
 UTILS_DIR="${BASE_DIR}/utils"
