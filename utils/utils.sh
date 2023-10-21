@@ -55,7 +55,6 @@ check_version() {
     fi
 }
 
-
 extract_digits() {
     local str="$1"
     echo "$str" | grep -o -E '[0-9]+' | tr -d '\n'
@@ -76,7 +75,7 @@ exclude_key_digits() {
     echo "$str" | sed 's/[0-9]\+//'
 }
 
-extract_dict_from_yaml() {
+load_configs() {
     local input_yaml_file=$1
     local -n result_dict=$2
 

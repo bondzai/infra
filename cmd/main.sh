@@ -14,31 +14,28 @@ source "${CONTROLLERS_DIR}/system/main.sh"
 source "${CONTROLLERS_DIR}/setup/packages.sh"
 source "${CONTROLLERS_DIR}/setup/main.sh"
 
-declare -A index_menu
-declare -A packages_menu
-declare -A system_menu
+declare -A index_menu packages_menu system_menu
 
-load_configs() {
-    extract_dict_from_yaml "${CONFIG_DIR}/index.yaml" index_menu
-    extract_dict_from_yaml "${CONFIG_DIR}/packages.yaml" packages_menu
-    extract_dict_from_yaml "${CONFIG_DIR}/system.yaml" system_menu
+init() {
+    load_configs "${CONFIG_DIR}/index.yaml" index_menu
+    load_configs "${CONFIG_DIR}/packages.yaml" packages_menu
+    load_configs "${CONFIG_DIR}/system.yaml" system_menu
+    menu="index_menu"
 }
-
-menu="index_menu"
 
 handle_choice() {
     local choice_index=$1
+    local choice_found=false
+    declare -n current_menu=$menu
+
     if ! validate_is_number $choice_index; then
         return
     fi
 
-    declare -n local_list=$2
-    local choice_found=false
-
-    for choice_key in "${!local_list[@]}"; do
+    for choice_key in "${!current_menu[@]}"; do
         if [[ "$choice_key" == "$choice_index"* ]]; then
             choice_found=true
-            local choice_value="${local_list[$choice_key]}"
+            local choice_value="${current_menu[$choice_key]}"
             break
         fi
     done
@@ -73,13 +70,13 @@ handle_choice() {
 }
 
 main() {
-    load_configs
-    
+    init
+
     while true; do
         render_menu $menu
 
         read -p " Enter your choice: " choice
-        handle_choice $choice $menu
+        handle_choice $choice
 
         if [[ $menu == "exit" ]]; then
             shutdown_service
