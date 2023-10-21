@@ -36,13 +36,13 @@ render_menu() {
         desc=$(exclude_key_digits "$key")
 
         if [[ $index == 0 ]]; then
-            echo " ========= $desc ========="
+            echo -e " $BLUE========= $desc ========="
         else
-            echo " [$index] | $desc"
+            echo -e " $BLUE[$index] | $DEFAULT$desc"
         fi
     done
 
-    echo -e "${MAGENTA}"
+    echo -e "${BLUE}"
 }
 
 handle_choice() {

@@ -9,15 +9,15 @@ TIMEZONE=$(timedatectl show --property=Timezone --value)
 FOLLOW_ME="${CYAN}https://thejb.onrender.com"
 
 banner="\n
-${WHITE}=== Linux Infrastructure Toolbox === \n
+${RED}=== Linux Infrastructure Toolbox === \n
+${RED}USER: ${DEFAULT}$USER_NAME \n
+${RED}MACHINE: ${DEFAULT}$HOST_NAME \n
+${RED}OS: ${DEFAULT}$OS_NAME \n
+${RED}TIME ZONE: ${DEFAULT}$TIMEZONE \n
+${RED}ABOUT ME: ${DEFAULT}$FOLLOW_ME \n
 
-USER: $USER_NAME | MACHINE: $HOST_NAME \n
-OS: $OS_NAME \n
-TIME ZONE: $TIMEZONE \n
-ABOUT ME: $FOLLOW_ME \n
-
-${WHITE}==================================== \n
-${CYAN}"
+${RED}==================================== \n
+"
 
 render_banner() {
     echo -e $banner
