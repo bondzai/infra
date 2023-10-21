@@ -68,21 +68,21 @@ handle_choice() {
 
     case $menu in
         "index_menu")
-            if [[ "$selected_choice_index" == "99" ]]; then
+            if [[ $selected_choice_index -eq 99 ]]; then
                 menu="exit"
             else
                 menu="$selected_choice_value"
             fi
             ;;
         "packages_menu")
-            if [[ "$selected_choice_index" == "99" ]]; then
+            if [[ $selected_choice_index -eq 99 ]]; then
                 menu="index_menu"
             else
                 install_package $selected_choice_value $(check_version)
             fi
             ;;
         "system_menu")
-            if [[ "$selected_choice_index" == "99" ]]; then
+            if [[ $selected_choice_index -eq 99 ]]; then
                 menu="index_menu"
             else
                 exec_system_cmd $selected_choice_value
@@ -98,10 +98,7 @@ main() {
         handle_choice $choice $menu
 
         if [[ $menu == "exit" ]]; then
-            sleep 0.5
-            echo
-            echo " Keep calm & farming..."
-            exit
+            render_falldown
         fi
 
         render_menu $menu
