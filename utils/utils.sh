@@ -115,15 +115,15 @@ pprint() {
         ;;
 
     -s)
-        prefix="${GREEN} Process:"
+        prefix="${GREEN} "
         ;;
 
     -i)
-        prefix="${DEFAULT} Info:"
+        prefix="${DEFAULT} "
         ;;
 
     -p | -f)
-        prefix="${CYAN} Process:"
+        prefix="${CYAN} "
         ;;
 
     *)
