@@ -26,3 +26,11 @@ render_menu() {
         fi
     done
 }
+
+read_choice() {
+    local msg=${CYAN}" Enter your choice: "${DEFAULT}
+    echo
+    echo -n -e $msg
+    read choice
+    echo
+}

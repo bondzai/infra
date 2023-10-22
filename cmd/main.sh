@@ -26,13 +26,6 @@ init() {
     menu="MAIN_MENU"
 }
 
-read_choice() {
-    local msg=${CYAN}" Enter your choice: "${DEFAULT}
-    echo
-    echo -n -e $msg
-    read choice
-    echo
-}
 
 handle_choice() {
     local choice_index=$1
