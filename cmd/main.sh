@@ -13,6 +13,8 @@ SOURCES[${CONTROLLERS_DIR}/system]="cmds.sh main.sh"
 SOURCES[${CONTROLLERS_DIR}/setup]="packages.sh main.sh"
 
 init() {
+    trap handle_error ERR
+
     for dir in "${!SOURCES[@]}"; do
         for file in ${SOURCES[$dir]}; do
             source "${dir}/${file}"

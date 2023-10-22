@@ -2,11 +2,9 @@
 
 handle_error() {
     local err=$?
-    echo "Error occurred in function ${FUNCNAME[1]} at line ${BASH_LINENO[0]} with exit code $err."
+    pprint -e "Error occurred in function ${FUNCNAME[1]} at line ${BASH_LINENO[0]} with exit code $err."
     exit $err
 }
-
-trap handle_error ERR
 
 shutdown_service() {
     pprint -i "Keep calm & farming..."
