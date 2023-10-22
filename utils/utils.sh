@@ -91,9 +91,7 @@ load_configs() {
 validate_is_number() {
     local input=$1
     if ! [[ "$input" =~ ^[0-9]+$ ]]; then
-        echo
-        echo " Error: choice index is not numeric. Select a valid choice."
-        echo
+        pprint error "choice index is not numeric. Select a valid choice."
         echo " Press ENTER to continue..."
         read _
         return 1
@@ -115,21 +113,21 @@ validate_is_exists() {
 pprint() {
     local type=$1
     local message=$2
+    local prefix=""
 
     case $type in
-    DEFAULT)
-        echo -e $WHITE
+    info)
+        prefix="${DEFAULT} Info:"
         ;;
 
     error | warning)
-        echo -e $RED
+        prefix="${RED} Error:"
         ;;
 
     *)
-        echo -e $DEFAULT
+        prefix="${DEFAULT} "
         ;;
     esac
 
-    echo -e $message
-    echo -e $DEFAULT
+    echo -e "$prefix $message \n $DEFAULT"
 }
