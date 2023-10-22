@@ -20,8 +20,7 @@ setup_deps() {
         return 0
     }
     pprint -w "$1 not found. Installing $1..."
-    sudo apt-get update
-    sudo apt-get install $1 -y
+    sudo apt-get update && sudo apt-get install $1 -y
 }
 
 check_os() {
@@ -75,7 +74,7 @@ load_configs() {
             result_dict["$yaml_key"]="$yaml_value"
         done < <(eval "${REGEX_DICT[": "]}" "$input_yaml_file")
     else
-        echo "Format not found"
+        pprint -e "Format not found"
         return 1
     fi
 }
@@ -84,7 +83,7 @@ validate_is_number() {
     local input=$1
     if ! [[ "$input" =~ ^[0-9]+$ ]]; then
         pprint -e "choice index is not numeric. Select a valid choice."
-        echo " Press ENTER to continue..."
+        pprint -i " Press ENTER to continue..."
         read _
         return 1
     fi
@@ -94,7 +93,7 @@ validate_is_exists() {
     local input=$1
     if [[ "$input" == "false" ]]; then
         pprint -e "choice index not found in the list. Select a valid choice."
-        echo " Press ENTER to continue..."
+        pprint -i " Press ENTER to continue..."
         read _
         return 1
     fi
