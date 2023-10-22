@@ -107,27 +107,27 @@ pprint() {
 
     case $type in
     -e)
-        prefix="${RED} Error:"
+        prefix="${RED}Error:"
         ;;
 
     -w)
-        prefix="${Yellow} Warning:"
+        prefix="${Yellow}Warning:"
         ;;
 
     -s)
-        prefix="${GREEN} "
+        prefix="${GREEN}"
         ;;
 
     -i)
-        prefix="${DEFAULT} "
+        prefix="${DEFAULT}"
         ;;
 
     -p | -f)
-        prefix="${CYAN} "
+        prefix="${CYAN}"
         ;;
 
     *)
-        prefix="${DEFAULT} "
+        prefix="${DEFAULT}"
         ;;
     esac
 

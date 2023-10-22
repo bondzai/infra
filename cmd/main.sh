@@ -26,6 +26,14 @@ init() {
     menu="MAIN_MENU"
 }
 
+read_choice() {
+    local msg=${CYAN}" Enter your choice: "${DEFAULT}
+    echo
+    echo -n -e $msg
+    read choice
+    echo
+}
+
 handle_choice() {
     local choice_index=$1
     local choice_found=false
@@ -78,7 +86,7 @@ main() {
     while true; do
         render_menu $menu
 
-        read -p " Enter your choice: " choice
+        read_choice
 
         handle_choice $choice
     done
