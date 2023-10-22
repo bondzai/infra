@@ -49,7 +49,7 @@ handle_choice() {
             if [[ $choice_index -ne EXIT_CHOICE ]]; then
                 menu="$choice_value"
             else
-                menu="exit"
+                shutdown_service
             fi
             ;;
         "packages_menu")
@@ -77,11 +77,6 @@ main() {
 
         read -p " Enter your choice: " choice
         handle_choice $choice
-
-        if [[ $menu == "exit" ]]; then
-            shutdown_service
-        fi
-
     done
 }
 
