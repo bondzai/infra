@@ -9,8 +9,7 @@ handle_error() {
 trap handle_error ERR
 
 shutdown_service() {
-    sleep 0.5
-    pprint info "Keep calm & farming..."
+    pprint -i "Keep calm & farming..."
     exit 0
 }
 
@@ -114,14 +113,23 @@ pprint() {
     local type=$1
     local message=$2
     local prefix=""
+    local suffix=""
 
     case $type in
-    info)
+    -i)
         prefix="${DEFAULT} Info:"
         ;;
 
-    error | warning)
+    -e)
         prefix="${RED} Error:"
+        ;;
+
+    -p | -f)
+        prefix="${YELLOW} Process:"
+        ;;
+
+    -s)
+        prefix="${GREEN} Process:"
         ;;
 
     *)
@@ -129,5 +137,6 @@ pprint() {
         ;;
     esac
 
+    sleep 0.25
     echo -e "$prefix $message \n $DEFAULT"
 }
