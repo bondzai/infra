@@ -16,7 +16,3 @@ install_package() {
     pprint -f "Press ENTER to continue..."
     read _
 }
-
-list_installed_packages() {
-    dpkg --get-selections | grep -v deinstall | cut -f1
-}
