@@ -32,3 +32,9 @@ exec_check_network_status() {
         pprint -e "Network status: Offline"
     fi
 }
+
+exec_check_external_ip() {
+    external_iface=$(ip route | awk '/default/ {print $5}')
+    external_ip=$(ip addr show dev $external_iface | awk '/inet / {print $2}' | cut -d'/' -f1)
+    echo "External IP address on interface $external_iface: $external_ip"
+}
