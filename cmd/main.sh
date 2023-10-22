@@ -6,24 +6,24 @@ COMPONENTS_DIR="${BASE_DIR}/components"
 CONTROLLERS_DIR="${BASE_DIR}/controllers"
 UTILS_DIR="${BASE_DIR}/utils"
 
-declare -A SOURCES
+declare -A SOURCES INDEX_MENU PACKAGE_MENU SYSTEM_MENU
 SOURCES[${UTILS_DIR}]="constants.sh utils.sh"
 SOURCES[${COMPONENTS_DIR}]="global.sh"
 SOURCES[${CONTROLLERS_DIR}/system]="cmds.sh main.sh"
 SOURCES[${CONTROLLERS_DIR}/setup]="packages.sh main.sh"
-for dir in "${!SOURCES[@]}"; do
-    for file in ${SOURCES[$dir]}; do
-        source "${dir}/${file}"
-    done
-done
-
-declare -A index_menu packages_menu system_menu
 
 init() {
-    load_configs "${CONFIG_DIR}/index.yaml" index_menu
-    load_configs "${CONFIG_DIR}/packages.yaml" packages_menu
-    load_configs "${CONFIG_DIR}/system.yaml" system_menu
-    menu="index_menu"
+    for dir in "${!SOURCES[@]}"; do
+        for file in ${SOURCES[$dir]}; do
+            source "${dir}/${file}"
+        done
+    done
+
+    load_configs "${CONFIG_DIR}/index.yaml" INDEX_MENU
+    load_configs "${CONFIG_DIR}/packages.yaml" PACKAGE_MENU
+    load_configs "${CONFIG_DIR}/system.yaml" SYSTEM_MENU
+
+    menu="INDEX_MENU"
 }
 
 handle_choice() {
@@ -48,25 +48,25 @@ handle_choice() {
     fi
 
     case $menu in
-        "index_menu")
+        "INDEX_MENU")
             if [[ $choice_index -ne EXIT_CHOICE ]]; then
                 menu="$choice_value"
             else
                 shutdown_service
             fi
             ;;
-        "packages_menu")
+        "PACKAGE_MENU")
             if [[ $choice_index -ne EXIT_CHOICE ]]; then
                 install_package $choice_value $(check_version)
             else
-                menu="index_menu"
+                menu="INDEX_MENU"
             fi
             ;;
-        "system_menu")
+        "SYSTEM_MENU")
             if [[ $choice_index -ne EXIT_CHOICE ]]; then
                 exec_system_cmd $choice_value
             else
-                menu="index_menu"
+                menu="INDEX_MENU"
             fi
             ;;
     esac

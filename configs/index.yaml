@@ -1,4 +1,4 @@
-0 MAIN MENU: index_menu
-1 System tools: system_menu
-2 Install Packages: packages_menu
+0 MAIN MENU: INDEX_MENU
+1 System tools: SYSTEM_MENU
+2 Install Packages: PACKAGE_MENU
 99 Exit: exit
