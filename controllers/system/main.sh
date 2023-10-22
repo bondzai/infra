@@ -4,16 +4,13 @@ exec_system_cmd() {
     local cmd=$1
 
     if declare -f "exec_$cmd" >/dev/null; then
-        echo -e " ===== start executing $cmd... ====="
-        echo
+        pprint -f "===== start executing $cmd... ====="
         "exec_$cmd"
-        echo
-        echo -e ${CYAN}" ===== end executing $cmd... ====="
+        pprint -f "===== end executing $cmd... ====="
     else
-        echo -e ${RED}"Command '$cmd' is not supported."
+        pprint -e "Command '$cmd' is not supported."
     fi
 
-    sleep 0.5
-    echo "Press ENTER to continue..."
+    pprint -f "Press ENTER to continue..."
     read _
 }

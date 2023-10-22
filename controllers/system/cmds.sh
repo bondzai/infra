@@ -6,8 +6,7 @@ exec_update() {
 
 exec_cleanup() {
     trash-empty
-    sleep 1
-    echo -e $GREEN"Trash empty!"
+    pprint -s "Trash empty!"
 }
 
 exec_check_network_status() {
@@ -15,15 +14,15 @@ exec_check_network_status() {
     local speedtest_command="speedtest-cli"
 
     if ping -c 3 "$host" &> /dev/null; then
-        echo "Network status: Online"
+        pprint -s "Network status: Online"
 
         if command -v "$speedtest_command" &> /dev/null; then
             echo "Checking network speed..."
             $speedtest_command
         else
-            echo "Speedtest-cli is not installed. You can install it for speed testing."
+            pprint -w "Speedtest-cli is not installed. You can install it for speed testing."
         fi
     else
-        echo "Network status: Offline"
+        pprint -e "Network status: Offline"
     fi
 }
