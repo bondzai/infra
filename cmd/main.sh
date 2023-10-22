@@ -6,7 +6,7 @@ COMPONENTS_DIR="${BASE_DIR}/components"
 CONTROLLERS_DIR="${BASE_DIR}/controllers"
 UTILS_DIR="${BASE_DIR}/utils"
 
-declare -A SOURCES INDEX_MENU PACKAGE_MENU SYSTEM_MENU
+declare -A SOURCES MAIN_MENU PACKAGE_MENU SYSTEM_MENU
 SOURCES[${UTILS_DIR}]="constants.sh utils.sh"
 SOURCES[${COMPONENTS_DIR}]="global.sh"
 SOURCES[${CONTROLLERS_DIR}/system]="cmds.sh main.sh"
@@ -19,11 +19,11 @@ init() {
         done
     done
 
-    load_configs "${CONFIG_DIR}/index.yaml" INDEX_MENU
+    load_configs "${CONFIG_DIR}/main.yaml" MAIN_MENU
     load_configs "${CONFIG_DIR}/packages.yaml" PACKAGE_MENU
     load_configs "${CONFIG_DIR}/system.yaml" SYSTEM_MENU
 
-    menu="INDEX_MENU"
+    menu="MAIN_MENU"
 }
 
 handle_choice() {
@@ -48,7 +48,7 @@ handle_choice() {
     fi
 
     case $menu in
-        "INDEX_MENU")
+        "MAIN_MENU")
             if [[ $choice_index -ne EXIT_CHOICE ]]; then
                 menu="$choice_value"
             else
@@ -59,14 +59,14 @@ handle_choice() {
             if [[ $choice_index -ne EXIT_CHOICE ]]; then
                 install_package $choice_value $(check_version)
             else
-                menu="INDEX_MENU"
+                menu="MAIN_MENU"
             fi
             ;;
         "SYSTEM_MENU")
             if [[ $choice_index -ne EXIT_CHOICE ]]; then
                 exec_system_cmd $choice_value
             else
-                menu="INDEX_MENU"
+                menu="MAIN_MENU"
             fi
             ;;
     esac
