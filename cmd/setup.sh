@@ -9,7 +9,7 @@ while IFS= read -r line; do
     fi
 
     if [[ $line == apt:* ]]; then
-        pprint -p "Updating apt package manager..."
+        pprint -p "Updating apt package manager$LAUNCH"
         sudo apt update
         installer="sudo apt install -y"
 
@@ -18,7 +18,7 @@ while IFS= read -r line; do
 
     elif [[ -n $installer ]]; then
         package_name=${line#- }
-        pprint -p "Installing $package_name..."
+        pprint -p "Installing $package_name$LAUNCH"
         $installer "$package_name"
     fi
 done < deps.yaml
