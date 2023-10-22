@@ -14,17 +14,12 @@ shutdown_service() {
 }
 
 setup_deps() {
-    echo
-    echo -e ${GREEN}"Installing $1 ..."${WHITE}
+    pprint -p "Installing $1 ..."
     command -v $1 &> /dev/null && {
-        echo
-        echo -e ${CYAN}"$1 already installed."${WHITE}
-        echo
+        pprint -p "$1 already installed."
         return 0
     }
-    echo
-    echo -e ${GREEN}"$1 not found. Installing $1..."${WHITE}
-    echo
+    pprint -w "$1 not found. Installing $1..."
     sudo apt-get update
     sudo apt-get install $1 -y
 }
@@ -44,11 +39,9 @@ check_version() {
     package_version=$($package $cmd_version_flag 2>&1)
 
     if [ $? -eq 0 ]; then
-        echo
-        echo -e ${GREEN}"$package installed successfully. Version: $package_version"
-        echo
+        pprint -s "$package installed successfully. Version: $package_version"
     else
-        echo -e ${RED}"Error checking version for $package using $cmd_version_flag"
+        pprint -e "Error checking version for $package using $cmd_version_flag"
     fi
 }
 
@@ -90,7 +83,7 @@ load_configs() {
 validate_is_number() {
     local input=$1
     if ! [[ "$input" =~ ^[0-9]+$ ]]; then
-        pprint error "choice index is not numeric. Select a valid choice."
+        pprint -e "choice index is not numeric. Select a valid choice."
         echo " Press ENTER to continue..."
         read _
         return 1
@@ -100,9 +93,7 @@ validate_is_number() {
 validate_is_exists() {
     local input=$1
     if [[ "$input" == "false" ]]; then
-        echo
-        echo " Error: choice index not found in the list. Select a valid choice."
-        echo
+        pprint -e "choice index not found in the list. Select a valid choice."
         echo " Press ENTER to continue..."
         read _
         return 1
@@ -116,20 +107,24 @@ pprint() {
     local suffix=""
 
     case $type in
-    -i)
-        prefix="${DEFAULT} Info:"
-        ;;
-
     -e)
         prefix="${RED} Error:"
         ;;
 
-    -p | -f)
-        prefix="${YELLOW} Process:"
+    -w)
+        prefix="${Yellow} Warning:"
         ;;
 
     -s)
         prefix="${GREEN} Process:"
+        ;;
+
+    -i)
+        prefix="${DEFAULT} Info:"
+        ;;
+
+    -p | -f)
+        prefix="${CYAN} Process:"
         ;;
 
     *)
