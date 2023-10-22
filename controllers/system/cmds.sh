@@ -18,8 +18,9 @@ exec_check_network_status() {
         pprint -s "Network status: Online"
 
         if command -v "$speedtest_command" &> /dev/null; then
-            echo "Checking network speed..."
+            echo "Checking network speed$LANUCH"
             $speedtest_command
+            echo
         else
             pprint -w "Speedtest-cli is not installed. You can install it for speed testing."
         fi

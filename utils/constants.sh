@@ -17,6 +17,7 @@ WHITE="\033[1;37m"
 MAGENTA="\033[1;35m"
 GRAY="\033[1;30m"
 PURPLE="\033[1;35m"
+LANUCH="...🚀"
 
 # config banner
 USER_NAME=$(whoami)

@@ -18,19 +18,21 @@ render_menu() {
         desc=$(exclude_key_digits "$key")
 
         if [[ $index == 0 ]]; then
-            echo -e " $CYAN========= $desc ========="
-        elif [[ $index -ne 99 ]]; then
-            echo -e " $CYAN[$index]  | $DEFAULT$desc"
+            echo -e "$CYAN$desc:"
+            echo -e "$CYAN ------------------------------------"
+        elif [[ $index -ne EXIT_CHOICE ]]; then
+            echo -e " $CYAN[$index]  | ${DEFAULT}$desc"
         else
-            echo -e " $CYAN[$index] | $DEFAULT$desc"
+            echo -e " $CYAN[$index] | ${DEFAULT}$desc"
         fi
     done
 }
 
 read_choice() {
-    local msg=${CYAN}" Enter your choice: "${DEFAULT}
-    echo
-    echo -n -e $msg
+    local prompt_message=${CYAN}" Enter your choice: "${DEFAULT}
+    
+    echo -e "$CYAN ------------------------------------"
+    echo -n -e $prompt_message
     read choice
-    echo
+    echo -e $DEFAULT
 }

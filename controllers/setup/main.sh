@@ -5,19 +5,18 @@ install_package() {
     local check_version=$2
 
     if declare -f "setup_$package" >/dev/null; then
-        echo -e " ===== start installing $package... ====="
-        echo
+        pprint -f "Start installing $package$LANUCH"
         "setup_$package"
-        echo
-        echo -e ${GREEN}" ===== end installing $package... ====="
+        pprint -f "End installing $package"
     else
-        echo -e ${RED}"Package '$package' is not supported."
+        pprint -e "Package '$package' is not supported."
     fi
 
-    sleep 0.5
     check_version $package
-    sleep 0.5
-    echo
-    echo "Press ENTER to continue..."
+    pprint -f "Press ENTER to continue..."
     read _
+}
+
+list_installed_packages() {
+    dpkg --get-selections | grep -v deinstall | cut -f1
 }
