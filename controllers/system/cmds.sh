@@ -2,6 +2,7 @@
 
 exec_update() {
     sudo apt update && sudo apt upgrade -y
+    pprint -s "System is up to date!"
 }
 
 exec_cleanup() {
