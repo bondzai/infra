@@ -6,13 +6,16 @@ COMPONENTS_DIR="${BASE_DIR}/components"
 CONTROLLERS_DIR="${BASE_DIR}/controllers"
 UTILS_DIR="${BASE_DIR}/utils"
 
-source "${UTILS_DIR}/constants.sh"
-source "${UTILS_DIR}/utils.sh"
-source "${COMPONENTS_DIR}/global.sh"
-source "${CONTROLLERS_DIR}/system/cmds.sh"
-source "${CONTROLLERS_DIR}/system/main.sh"
-source "${CONTROLLERS_DIR}/setup/packages.sh"
-source "${CONTROLLERS_DIR}/setup/main.sh"
+declare -A SOURCES
+SOURCES[${UTILS_DIR}]="constants.sh utils.sh"
+SOURCES[${COMPONENTS_DIR}]="global.sh"
+SOURCES[${CONTROLLERS_DIR}/system]="cmds.sh main.sh"
+SOURCES[${CONTROLLERS_DIR}/setup]="packages.sh main.sh"
+for dir in "${!SOURCES[@]}"; do
+    for file in ${SOURCES[$dir]}; do
+        source "${dir}/${file}"
+    done
+done
 
 declare -A index_menu packages_menu system_menu
 
@@ -76,6 +79,7 @@ main() {
         render_menu $menu
 
         read -p " Enter your choice: " choice
+
         handle_choice $choice
     done
 }
