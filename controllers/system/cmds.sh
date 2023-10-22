@@ -38,3 +38,19 @@ exec_check_external_ip() {
     external_ip=$(ip addr show dev $external_iface | awk '/inet / {print $2}' | cut -d'/' -f1)
     echo "External IP address on interface $external_iface: $external_ip"
 }
+
+exec_view_external_network_info() {
+    external_iface=$(ip route | awk '/default/ {print $5}')
+    external_ip=$(ip addr show dev $external_iface | awk '/inet / {print $2}' | cut -d'/' -f1)
+    subnet_mask=$(ip addr show dev $external_iface | awk '/inet / {print $2}' | cut -d'/' -f2)
+    mac_address=$(ip link show dev $external_iface | awk '/link\/ether/ {print $2}')
+    gateway=$(ip route | awk '/default/ {print $3}')
+    dns_servers=$(nmcli dev show $external_iface | awk '/IP4.DNS/ {print $2}')
+
+    echo "External Interface: $external_iface"
+    echo "External IP Address: $external_ip"
+    echo "Subnet Mask: $subnet_mask"
+    echo "MAC Address: $mac_address"
+    echo "Gateway: $gateway"
+    echo "DNS Servers: $dns_servers"
+}
