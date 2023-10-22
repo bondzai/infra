@@ -82,8 +82,8 @@ load_configs() {
 validate_is_number() {
     local input=$1
     if ! [[ "$input" =~ ^[0-9]+$ ]]; then
-        pprint -e "choice index is not numeric. Select a valid choice."
-        pprint -i " Press ENTER to continue..."
+        pprint -e "Choice index is not numeric. Select a valid choice."
+        pprint -i "Press ENTER to continue..."
         read _
         return 1
     fi
@@ -92,8 +92,8 @@ validate_is_number() {
 validate_is_exists() {
     local input=$1
     if [[ "$input" == "false" ]]; then
-        pprint -e "choice index not found in the list. Select a valid choice."
-        pprint -i " Press ENTER to continue..."
+        pprint -e "Choice index not found in the list. Select a valid choice."
+        pprint -i "Press ENTER to continue..."
         read _
         return 1
     fi
