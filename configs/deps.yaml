@@ -1,4 +1,4 @@
-# Packages to be installed via package manager
+# Prerequisites and dependencies. (List of packages to be installed via standard linux package manager)
 apt:
 - curl
 - jq
