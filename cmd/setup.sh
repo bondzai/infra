@@ -2,7 +2,7 @@
 
 installer=""
 
-# Read and install packages from deps.yaml
+# Read and install packages from dependencies.yaml
 while IFS= read -r line; do
     if [[ $line == \#* ]]; then
         continue
@@ -21,6 +21,6 @@ while IFS= read -r line; do
         pprint -p "Installing $package_name$LAUNCH"
         $installer "$package_name"
     fi
-done < deps.yaml
+done < dependencies.yaml
 
 pprint -s "All dependencies installed!"
