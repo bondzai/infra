@@ -28,7 +28,7 @@ init() {
     load_configs "${CONFIG_DIR}/system.yaml" SYSTEM_MENU
     load_configs "${CONFIG_DIR}/network.yaml" NETWORK_MENU
 
-    menu="MAIN_MENU"
+    menu=MAIN_MENU
 }
 
 handle_choice() {
@@ -53,25 +53,25 @@ handle_choice() {
     fi
 
     case $menu in
-        "MAIN_MENU")
+        MAIN_MENU)
             if [[ $choice_index -ne EXIT_CHOICE ]]; then
                 menu="$choice_value"
             else
                 shutdown_service
             fi
             ;;
-        "PACKAGE_MENU")
+        PACKAGE_MENU)
             if [[ $choice_index -ne EXIT_CHOICE ]]; then
                 install_package $choice_value $(check_version)
             else
-                menu="MAIN_MENU"
+                menu=MAIN_MENU
             fi
             ;;
-        "SYSTEM_MENU" | "NETWORK_MENU")
+        SYSTEM_MENU | NETWORK_MENU)
             if [[ $choice_index -ne EXIT_CHOICE ]]; then
                 exec_system_cmd $choice_value
             else
-                menu="MAIN_MENU"
+                menu=MAIN_MENU
             fi
             ;;
     esac
