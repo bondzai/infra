@@ -11,6 +11,7 @@ SOURCES[${UTILS_DIR}]="constants.sh utils.sh"
 SOURCES[${COMPONENTS_DIR}]="global.sh"
 SOURCES[${CONTROLLERS_DIR}/]="main.sh"
 SOURCES[${CONTROLLERS_DIR}/system]="main.sh"
+SOURCES[${CONTROLLERS_DIR}/network]="main.sh"
 SOURCES[${CONTROLLERS_DIR}/installer]="main.sh"
 
 init() {
