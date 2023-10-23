@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# system controller
-exec_system_cmd() {
+# system | network controllers
+execute_command() {
     local cmd=$1
 
     if declare -f "exec_$cmd" >/dev/null; then
         pprint -f "Start executing $cmd command$LANUCH"
         "exec_$cmd"
-        pprint -f "End executing $cmd command"
+        pprint -f "End executing $cmd command."
     else
         pprint -e "Command '$cmd' is not supported."
     fi
@@ -16,7 +16,7 @@ exec_system_cmd() {
     read _
 }
 
-# package-installer controller
+# package-installer controllers
 install_package() {
     local package=$1
     local check_version=$2
@@ -33,5 +33,3 @@ install_package() {
     pprint -f "Press ENTER to continue..."
     read _
 }
-
-# network controller

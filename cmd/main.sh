@@ -56,7 +56,7 @@ handle_choice() {
             ;;
         SYSTEM_MENU | NETWORK_MENU)
             if [[ $choice_index -ne EXIT_CHOICE ]]; then
-                exec_system_cmd $choice_value
+                execute_command $choice_value
             else
                 menu=MAIN_MENU
             fi
