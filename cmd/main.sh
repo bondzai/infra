@@ -11,10 +11,9 @@ init() {
         done
     done
 
-    load_configs "${CONFIG_DIR}/main.yaml" MAIN_MENU
-    load_configs "${CONFIG_DIR}/system.yaml" SYSTEM_MENU
-    load_configs "${CONFIG_DIR}/network.yaml" NETWORK_MENU
-    load_configs "${CONFIG_DIR}/installer.yaml" INSTALLER_MENU
+    for config_file in "${!CONFIGS[@]}"; do
+        load_configs "${config_file}" "${CONFIGS[$config_file]}"
+    done
 
     menu=MAIN_MENU
 }
