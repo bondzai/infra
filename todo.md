@@ -3,7 +3,7 @@
 
 ## feature
 - ~~create network tools menu~~
-- load configs dynamically
+- ~~load configs dynamically~~
 - create docker containers tools menu
 - arch linux handle
 - simple shell api
