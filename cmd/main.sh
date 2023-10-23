@@ -9,8 +9,9 @@ UTILS_DIR="${BASE_DIR}/utils"
 declare -A SOURCES MAIN_MENU PACKAGE_MENU SYSTEM_MENU
 SOURCES[${UTILS_DIR}]="constants.sh utils.sh"
 SOURCES[${COMPONENTS_DIR}]="global.sh"
-SOURCES[${CONTROLLERS_DIR}/system]="cmds.sh main.sh"
-SOURCES[${CONTROLLERS_DIR}/setup]="packages.sh main.sh"
+SOURCES[${CONTROLLERS_DIR}/]="main.sh"
+SOURCES[${CONTROLLERS_DIR}/system]="main.sh"
+SOURCES[${CONTROLLERS_DIR}/installer]="main.sh"
 
 init() {
     trap handle_error ERR
@@ -27,7 +28,6 @@ init() {
 
     menu="MAIN_MENU"
 }
-
 
 handle_choice() {
     local choice_index=$1
