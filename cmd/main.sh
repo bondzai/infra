@@ -24,9 +24,9 @@ init() {
     done
 
     load_configs "${CONFIG_DIR}/main.yaml" MAIN_MENU
-    load_configs "${CONFIG_DIR}/packages.yaml" PACKAGE_MENU
     load_configs "${CONFIG_DIR}/system.yaml" SYSTEM_MENU
     load_configs "${CONFIG_DIR}/network.yaml" NETWORK_MENU
+    load_configs "${CONFIG_DIR}/installer.yaml" INSTALLER_MENU
 
     menu=MAIN_MENU
 }
@@ -60,7 +60,7 @@ handle_choice() {
                 shutdown_service
             fi
             ;;
-        PACKAGE_MENU)
+        INSTALLER_MENU)
             if [[ $choice_index -ne EXIT_CHOICE ]]; then
                 install_package $choice_value $(check_version)
             else

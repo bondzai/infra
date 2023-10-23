@@ -1,5 +1,5 @@
 0 MAIN MENU: MAIN_MENU
 1 System tools: SYSTEM_MENU
 2 Network tools: NETWORK_MENU
-3 Package Installers: PACKAGE_MENU
+3 Package Installers: INSTALLER_MENU
 99 Exit: exit

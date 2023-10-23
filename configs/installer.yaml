@@ -1,4 +1,4 @@
-0 PACKAGES PILOT: PACKAGE_MENU
+0 INSTALLER MENU: INSTALLER_MENU
 1 ZSH with essential plugins: zsh
 2 Docker engine with docker compose v2: docker
 3 Python version manager(pyenv): pyenv
