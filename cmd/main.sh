@@ -1,18 +1,6 @@
 #!/bin/bash
 
-BASE_DIR="$(dirname $0)/.."
-CONFIG_DIR="${BASE_DIR}/configs"
-COMPONENTS_DIR="${BASE_DIR}/components"
-CONTROLLERS_DIR="${BASE_DIR}/controllers"
-UTILS_DIR="${BASE_DIR}/utils"
-
-declare -A SOURCES
-SOURCES[${UTILS_DIR}]="constants.sh utils.sh"
-SOURCES[${COMPONENTS_DIR}]="global.sh"
-SOURCES[${CONTROLLERS_DIR}/]="main.sh"
-SOURCES[${CONTROLLERS_DIR}/system]="main.sh"
-SOURCES[${CONTROLLERS_DIR}/network]="main.sh"
-SOURCES[${CONTROLLERS_DIR}/installer]="main.sh"
+source "$(dirname $0)/../utils/constants.sh"
 
 init() {
     trap handle_error ERR

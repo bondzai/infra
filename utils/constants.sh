@@ -1,11 +1,24 @@
 #!/bin/bash
 
-declare -A REGEX_DICT
+BASE_DIR="$(dirname $0)/.."
+CONFIG_DIR="${BASE_DIR}/configs"
+COMPONENTS_DIR="${BASE_DIR}/components"
+CONTROLLERS_DIR="${BASE_DIR}/controllers"
+UTILS_DIR="${BASE_DIR}/utils"
+
+declare -A SOURCES
+SOURCES[${UTILS_DIR}]="constants.sh utils.sh"
+SOURCES[${COMPONENTS_DIR}]="global.sh"
+SOURCES[${CONTROLLERS_DIR}/]="main.sh"
+SOURCES[${CONTROLLERS_DIR}/system]="main.sh"
+SOURCES[${CONTROLLERS_DIR}/network]="main.sh"
+SOURCES[${CONTROLLERS_DIR}/installer]="main.sh"
 
 # Store the awk logic for extracting key=value format from YAML in the dictionary
+declare -A REGEX_DICT
 REGEX_DICT[": "]="awk -F': ' '{if (NF==2) print \$1 \"=\" \$2}'"
 
-# Styles Constants
+# Styles constants
 DEFAULT="\033[0m"
 RED="\033[1;31m"
 PINK="\033[38;5;213m"
@@ -19,7 +32,7 @@ GRAY="\033[1;30m"
 PURPLE="\033[1;35m"
 LANUCH="...🚀"
 
-# config banner
+# Config banner
 USER_NAME=$(whoami)
 HOST_NAME=$(hostname)
 OS_NAME=$(lsb_release -ds)
