@@ -6,7 +6,7 @@ COMPONENTS_DIR="${BASE_DIR}/components"
 CONTROLLERS_DIR="${BASE_DIR}/controllers"
 UTILS_DIR="${BASE_DIR}/utils"
 
-declare -A SOURCES MAIN_MENU PACKAGE_MENU NETWORK_MENU SYSTEM_MENU
+declare -A SOURCES
 SOURCES[${UTILS_DIR}]="constants.sh utils.sh"
 SOURCES[${COMPONENTS_DIR}]="global.sh"
 SOURCES[${CONTROLLERS_DIR}/]="main.sh"

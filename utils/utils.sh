@@ -6,6 +6,27 @@ handle_error() {
     exit $err
 }
 
+load_configs() {
+    local input_yaml_file=$1
+    local result_dict_name=$2
+
+    if ! (declare -p $result_dict_name &>/dev/null); then
+        declare -gA $result_dict_name
+    fi
+
+    local -n result_dict=$result_dict_name
+
+    if [[ -n "${REGEX_DICT[": "]}" ]]; then
+        while IFS="=" read -r yaml_key yaml_value
+        do
+            result_dict["$yaml_key"]="$yaml_value"
+        done < <(eval "${REGEX_DICT[": "]}" "$input_yaml_file")
+    else
+        pprint -e "Format not found"
+        return 1
+    fi
+}
+
 shutdown_service() {
     pprint -i "Keep calm & farming..."
     exit 0
@@ -60,21 +81,6 @@ exclude_digits() {
 exclude_key_digits() {
     local str="$1"
     echo "$str" | sed 's/[0-9]\+//'
-}
-
-load_configs() {
-    local input_yaml_file=$1
-    local -n result_dict=$2
-
-    if [[ -n "${REGEX_DICT[": "]}" ]]; then
-        while IFS="=" read -r yaml_key yaml_value
-        do
-            result_dict["$yaml_key"]="$yaml_value"
-        done < <(eval "${REGEX_DICT[": "]}" "$input_yaml_file")
-    else
-        pprint -e "Format not found"
-        return 1
-    fi
 }
 
 validate_is_number() {
