@@ -6,7 +6,7 @@ COMPONENTS_DIR="${BASE_DIR}/components"
 CONTROLLERS_DIR="${BASE_DIR}/controllers"
 UTILS_DIR="${BASE_DIR}/utils"
 
-declare -A SOURCES MAIN_MENU PACKAGE_MENU SYSTEM_MENU
+declare -A SOURCES MAIN_MENU PACKAGE_MENU NETWORK_MENU SYSTEM_MENU
 SOURCES[${UTILS_DIR}]="constants.sh utils.sh"
 SOURCES[${COMPONENTS_DIR}]="global.sh"
 SOURCES[${CONTROLLERS_DIR}/]="main.sh"
@@ -26,6 +26,7 @@ init() {
     load_configs "${CONFIG_DIR}/main.yaml" MAIN_MENU
     load_configs "${CONFIG_DIR}/packages.yaml" PACKAGE_MENU
     load_configs "${CONFIG_DIR}/system.yaml" SYSTEM_MENU
+    load_configs "${CONFIG_DIR}/network.yaml" NETWORK_MENU
 
     menu="MAIN_MENU"
 }
@@ -66,7 +67,7 @@ handle_choice() {
                 menu="MAIN_MENU"
             fi
             ;;
-        "SYSTEM_MENU")
+        "SYSTEM_MENU" | "NETWORK_MENU")
             if [[ $choice_index -ne EXIT_CHOICE ]]; then
                 exec_system_cmd $choice_value
             else
