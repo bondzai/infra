@@ -1,11 +1,13 @@
 #!/bin/bash
 
+# File structure constants: directories
 BASE_DIR="$(dirname $0)/.."
 CONFIG_DIR="${BASE_DIR}/configs"
 COMPONENTS_DIR="${BASE_DIR}/components"
 CONTROLLERS_DIR="${BASE_DIR}/controllers"
 UTILS_DIR="${BASE_DIR}/utils"
 
+# File structure constants: files
 declare -A SOURCES
 SOURCES[${UTILS_DIR}]="constants.sh utils.sh"
 SOURCES[${COMPONENTS_DIR}]="global.sh"
@@ -14,7 +16,14 @@ SOURCES[${CONTROLLERS_DIR}/system]="main.sh"
 SOURCES[${CONTROLLERS_DIR}/network]="main.sh"
 SOURCES[${CONTROLLERS_DIR}/installer]="main.sh"
 
-# Store the awk logic for extracting key=value format from YAML in the dictionary
+# 3rd party configuration contansts
+declare -A CONFIGS
+CONFIGS["${CONFIG_DIR}/main.yaml"]="MAIN_MENU"
+CONFIGS["${CONFIG_DIR}/system.yaml"]="SYSTEM_MENU"
+CONFIGS["${CONFIG_DIR}/network.yaml"]="NETWORK_MENU"
+CONFIGS["${CONFIG_DIR}/installer.yaml"]="INSTALLER_MENU"
+
+# Regular expression constants
 declare -A REGEX_DICT
 REGEX_DICT[": "]="awk -F': ' '{if (NF==2) print \$1 \"=\" \$2}'"
 
@@ -32,7 +41,7 @@ GRAY="\033[1;30m"
 PURPLE="\033[1;35m"
 LANUCH="...🚀"
 
-# Config banner
+# Banner constants
 USER_NAME=$(whoami)
 HOST_NAME=$(hostname)
 OS_NAME=$(lsb_release -ds)
