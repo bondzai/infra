@@ -1,11 +1,12 @@
-<!-- fixes -->
+# fix
 - check network info pprint
 
-<!-- features -->
+## feature
 - create network tools menu
 - create docker containers tools menu
 - arch linux handle
 - simple shell api
 
-<!-- refactor -->
-- trap on init
+## refactor
+- ~~trap on init~~
+- main on controller for routes centralizer
