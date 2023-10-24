@@ -46,7 +46,7 @@ USER_NAME=$(whoami)
 HOST_NAME=$(hostname)
 OS_NAME=$(lsb_release -ds)
 TIMEZONE=$(timedatectl show --property=Timezone --value)
-FOLLOW_ME="${CYAN}https://thejb.onrender.com"
+ABOUT_ME="${CYAN}https://thejb.onrender.com"
 
 BANNER="\n
 ${MAGENTA}=== ${RED}Linux Infrastructure Toolbox ${MAGENTA}=== \n
@@ -54,7 +54,7 @@ ${MAGENTA}USER: ${DEFAULT}$USER_NAME \n
 ${MAGENTA}MACHINE: ${DEFAULT}$HOST_NAME \n
 ${MAGENTA}OS: ${DEFAULT}$OS_NAME \n
 ${MAGENTA}TIME ZONE: ${DEFAULT}$TIMEZONE \n
-${MAGENTA}ABOUT ME: ${DEFAULT}$FOLLOW_ME \n
+${MAGENTA}ABOUT ME: ${DEFAULT}$ABOUT_ME \n
 ${MAGENTA}==================================== 
 \n"
 
