@@ -1,5 +1,15 @@
 #!/bin/bash
 
+setup_starter_packages() {
+    sudo apt update && sudo apt upggrade -y
+    setup_git
+    setup_docker
+}
+
+setup_git() {
+    sudo apt install git
+}
+
 setup_docker() {
     sudo apt install docker.io
 }
