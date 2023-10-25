@@ -20,30 +20,30 @@ exec_detect_os() {
 }
 
 exec_update_packages() {
-    if [ -f /etc/os-release ]; then
-        . /etc/os-release
-        case $ID in
+    OS_ID=$(get_os_id)
+    case $OS_ID in
         ubuntu|debian|linuxmint)
-            echo "Updating packages using apt..."
-            sudo apt-get update && sudo apt-get upgrade
-            ;;
+        echo "Updating packages using apt..."
+        sudo apt-get update && sudo apt-get upgrade
+        ;;
         arch|manjaro)
-            echo "Updating packages using pacman..."
-            sudo pacman -Syu
-            ;;
+        echo "Updating packages using pacman..."
+        sudo pacman -Syu
+        ;;
         fedora|rhel|centos)
-            echo "Updating packages using dnf..."
-            sudo dnf update
-            ;;
+        echo "Updating packages using dnf..."
+        sudo dnf update
+        ;;
         suse|opensuse)
-            echo "Updating packages using zypper..."
-            sudo zypper update
-            ;;
-        *)
-            echo "Unsupported OS for package updates"
-            ;;
-        esac
-    else
+        echo "Updating packages using zypper..."
+        sudo zypper update
+        ;;
+        unknown)
         echo "Unable to detect OS for package updates"
-    fi
+        ;;
+        *)
+        echo "Unsupported OS for package updates"
+        ;;
+    esac
 }
+
