@@ -10,11 +10,11 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 const data = {
-    AOT_USERNAME: process.env.USERNAME,
-    AOT_PASSWORD: process.env.PASSWORD,
-    AOT_CLIENT_ID: process.env.CLIENT_ID,
-    AOT_CLIENT_SECRET: process.env.CLIENT_SECRET,
-    AOT_AIRPORT_WS_ENDPOINT: process.env.AIRPORT_WS_ENDPOINT,
+    USERNAME: process.env.USERNAME,
+    PASSWORD: process.env.PASSWORD,
+    CLIENT_ID: process.env.CLIENT_ID,
+    CLIENT_SECRET: process.env.CLIENT_SECRET,
+    WS_ENDPOINT: process.env.WS_ENDPOINT,
     LINE_TOKEN: process.env.LINE_TOKEN,
 };
 
