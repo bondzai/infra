@@ -35,3 +35,21 @@ exec_view_external_network_info() {
     echo " DNS Servers: $dns_servers"
     echo
 }
+
+exec_ngrok_service() {
+    NGROK_DIR="/opt/ngrok"
+    WG_PORT="51820"
+
+    echo "Starting Ngrok$LANUCH"
+    cd $NGROK_DIR
+    ./ngrok udp $WG_PORT &
+
+    sleep 5
+
+    NGROK_PUBLIC_URL=$(curl -s http://localhost:4040/api/tunnels | grep -oP "public_url\":\"udp://\K[^\"]+")
+    if [ -z "$NGROK_PUBLIC_URL" ]; then
+        echo "Failed to fetch Ngrok public URL. Is Ngrok running?"
+    else
+        echo "Ngrok is running. Public URL for WireGuard: udp://$NGROK_PUBLIC_URL"
+    fi
+}

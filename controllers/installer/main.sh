@@ -136,3 +136,23 @@ setup_zsh() {
 
     echo "Setup complete! If you made any new installations, please restart your terminal or execute 'source ~/.zshrc' to activate changes."
 }
+
+setup_ngrok() {
+    NGROK_ZIP_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"
+    NGROK_DIR="/opt/ngrok"
+    NGROK_AUTHTOKEN="your_ngrok_authtoken"
+
+    echo "Creating directory for Ngrok..."
+    mkdir -p $NGROK_DIR
+    cd $NGROK_DIR
+
+    echo "Downloading and unzipping Ngrok..."
+    wget -q $NGROK_ZIP_URL -O ngrok.zip
+    unzip -o ngrok.zip
+    rm ngrok.zip
+
+    echo "Setting up Ngrok authtoken..."
+    ./ngrok authtoken $NGROK_AUTHTOKEN
+
+    echo "Ngrok has been set up successfully."
+}
