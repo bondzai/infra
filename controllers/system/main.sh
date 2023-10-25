@@ -18,26 +18,26 @@ exec_update_packages() {
     OS_ID=$(get_os_id)
     case $OS_ID in
         ubuntu|debian|linuxmint)
-        echo "Updating packages using apt..."
+        pprint -p "Updating packages using apt$LAUNCH"
         sudo apt-get update && sudo apt-get upgrade
         ;;
         arch|manjaro)
-        echo "Updating packages using pacman..."
+        pprint -p "Updating packages using pacman$LAUNCH"
         sudo pacman -Syu
         ;;
         fedora|rhel|centos)
-        echo "Updating packages using dnf..."
+        pprint -p "Updating packages using dnf$LAUNCH"
         sudo dnf update
         ;;
         suse|opensuse)
-        echo "Updating packages using zypper..."
+        pprint -p "Updating packages using zypper$LAUNCH"
         sudo zypper update
         ;;
         unknown)
-        echo "Unable to detect OS for package updates"
+        pprint -p "Unable to detect OS for package updates"
         ;;
         *)
-        echo "Unsupported OS for package updates"
+        pprint -p "Unsupported OS for package updates"
         ;;
     esac
 }
