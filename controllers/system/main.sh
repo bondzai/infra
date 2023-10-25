@@ -13,3 +13,8 @@ exec_cleanup() {
     trash-empty
     pprint -s "Trash empty!"
 }
+
+exec_detect_os() {
+    detect_os
+    pprint -s "Detect OS successfully!"
+}
