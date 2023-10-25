@@ -42,6 +42,25 @@ setup_deps() {
     sudo apt-get update && sudo apt-get install $1 -y
 }
 
+get_os_id() {
+    if [ -f /etc/os-release ]; then
+        . /etc/os-release
+        echo "$ID"
+    else
+        echo "unknown"
+    fi
+}
+get_os_detail() {
+    OS_ID=$(get_os_id)
+    if [ "$OS_ID" != "unknown" ]; then
+        . /etc/os-release
+        echo "Detected OS: $NAME"
+        echo "Version: $VERSION"
+    else
+        echo "Unable to detect OS"
+    fi
+}
+
 detect_os() {
     if [ -f /etc/os-release ]; then
         . /etc/os-release
