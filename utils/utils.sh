@@ -42,8 +42,30 @@ setup_deps() {
     sudo apt-get update && sudo apt-get install $1 -y
 }
 
-check_os() {
-    echo -e "check distro..."
+detect_os() {
+    if [ -f /etc/os-release ]; then
+        . /etc/os-release
+        echo "Detected OS: $NAME"
+        echo "Version: $VERSION"
+    elif [ -f /etc/arch-release ]; then
+        echo "Detected OS: Arch Linux"
+    elif [ -f /etc/redhat-release ]; then
+        echo "Detected OS: $(cat /etc/redhat-release)"
+    elif [ -f /etc/debian_version ]; then
+        echo "Detected OS: Debian $(cat /etc/debian_version)"
+    elif [ -f /etc/fedora-release ]; then
+        echo "Detected OS: Fedora"
+    elif [ -f /etc/SuSE-release ]; then
+        echo "Detected OS: SuSE"
+    elif [ -f /etc/centos-release ]; then
+        echo "Detected OS: CentOS"
+    elif [ -f /etc/gentoo-release ]; then
+        echo "Detected OS: Gentoo"
+    elif [ -f /etc/slackware-version ]; then
+        echo "Detected OS: Slackware"
+    else
+        echo "Unable to detect OS"
+    fi
 }
 
 check_version() {
