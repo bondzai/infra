@@ -4,10 +4,10 @@ services:
   ngrok:
     image: wernight/ngrok
     container_name: ngrok
-    command: ngrok udp --authtoken=your_ngrok_authtoken --region=us --log=stdout 51820
+    command: ngrok udp --authtoken=${NGROK_AUTHTOKEN:-your_default_ngrok_authtoken} --region=us --log=stdout 51820
     restart: unless-stopped
     ports:
       - "4040:4040"
       - "51820:51820/udp"
     environment:
-      NGROK_AUTHTOKEN: your_ngrok_authtoken
+      NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN:-your_default_ngrok_authtoken}
