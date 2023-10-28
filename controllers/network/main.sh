@@ -53,3 +53,10 @@ exec_ngrok_service() {
         echo "Ngrok is running. Public URL for WireGuard: udp://$NGROK_PUBLIC_URL"
     fi
 }
+
+exec_ngrok() {
+    LOCAL_PORT=80
+    
+    echo "Starting ngrok HTTP tunnel on port $LOCAL_PORT..."
+    /usr/local/bin/ngrok http $LOCAL_PORT &
+}
