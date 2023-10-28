@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  cassandra:
+    image: cassandra:latest
+    container_name: cassandra-node
+    environment:
+      - CASSANDRA_CLUSTER_NAME=TestCluster
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+    ports:
+      - "9042:9042" # CQL
+      - "9160:9160" # Thrift
+    networks:
+      - cassandra_network
+    restart: always
+
+volumes:
+  cassandra_data:
+
+networks:
+  cassandra_network:
+    driver: bridge
