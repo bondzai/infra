@@ -1,0 +1,4 @@
+0 NETWORK MENU: NETWORK_MENU
+1 Check network status & test speed: check_network_status
+2 View external network interfaces info: view_external_network_info
+99 Back to main menu: exit

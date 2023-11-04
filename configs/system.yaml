@@ -1,0 +1,6 @@
+0 SYSTEM MENU: SYSTEM_MENU
+1 Update system: update_packages
+2 Cleanup system: cleanup
+3 Check installed packages: check_installed_packages
+4 Detect OS : detect_os
+99 Back to main menu: exit

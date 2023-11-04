@@ -1,0 +1,7 @@
+0 INSTALLER MENU: INSTALLER_MENU
+1 ZSH with essential plugins: zsh
+2 Docker engine with docker compose v2: docker
+3 Python version manager(pyenv): pyenv
+4 NodeJS version manager(nvm): nvm
+5 Go version manager (gvm): gvm
+99 Back to main menu: exit

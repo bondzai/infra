@@ -1,0 +1,7 @@
+# Prerequisites and dependencies. (List of packages to be installed via standard linux package manager)
+apt:
+- curl
+- jq
+
+snap:
+- yq
