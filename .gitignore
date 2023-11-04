@@ -1,5 +1,4 @@
 *.env
-data/
-stack-cm/
+*data
 *env
 *__pycache__
