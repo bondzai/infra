@@ -1,17 +1,44 @@
 # Linux Infrastructure Toolbox
-- This repository provides a collection of **Bash scripts for Unix/Linux** machines. 
-- It's designed to handle common **infrastructure tasks efficiently**. 
+This repository provides a collection of **Bash scripts for Unix/Linux** machines. 
+
+## Installation
+1. Clone this repository
+2. Make the main.sh and setup.sh executable
+3. Execute the setup script
+
+```bash
+git clone https://github.com/introbond/linux-infra-toolbox.git
+cd ./cmd
+chmod +x main.sh setup.sh
+./setup.sh
+```
 
 ## Usage
-### Prerequisites
-1. Clone this repository: "git clone https://github.com/introbond/linux-infra-tools.git"
-2. Make the main.sh and setup.sh executable: "chmod +x main.sh setup.sh" (Both are stored in cmd directory)
-3. Execute the setup script: "./setup.sh"
+Execute the main script
+```bash
+./main.sh
+```
 
-### Getting Started
-1. Execute the main script: "./main.sh"
-2. You will be presented with a menu-driven interface that allows you to perform various tasks.
-3. You can customize these configuration files to add, modify, or remove options as needed.
+You will be presented with a menu-driven interface that allows you to perform various tasks like this.
+```bash
+ === Linux Infrastructure Toolbox === 
+ USER: jb 
+ MACHINE: jamesbond 
+ OS: Linux Mint 21.1 
+ TIME ZONE: Asia/Bangkok 
+ ABOUT ME: https://thejb.onrender.com 
+ ==================================== 
+
+ MAIN MENU:
+ ------------------------------------
+ [1]  |  System tools
+ [2]  |  Network tools
+ [3]  |  Package Installers
+ [99] |  Exit
+ ------------------------------------
+ Enter your choice:
+```
+You can customize these configuration files to add, modify, or remove options as needed.
 
 ## Contributing
 Contributions to this repository are welcome. If you have ideas for improving or extending these infrastructure tools, please submit a pull request.
