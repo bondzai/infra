@@ -8,9 +8,8 @@ This repository provides a collection of **Bash scripts for Unix/Linux** machine
 
 ```bash
 git clone https://github.com/introbond/linux-infra-toolbox.git
-cd ./cmd
-chmod +x main.sh setup.sh
-./setup.sh
+cd linux-infra-toolbox/cmd
+chmod +x main.sh setup.sh && ./setup.sh
 ```
 
 ## Usage
