@@ -1,5 +1,24 @@
 #!/bin/bash
 
+source "$(dirname $0)/../utils/constants.sh"
+
+init() {
+    trap handle_error ERR
+
+    for dir in "${!SOURCES[@]}"; do
+        for file in ${SOURCES[$dir]}; do
+            source "${dir}/${file}"
+        done
+    done
+
+    for config_file in "${!CONFIGS[@]}"; do
+        load_configs "${config_file}" "${CONFIGS[$config_file]}"
+    done
+
+}
+
+init
+
 installer=""
 
 # Read and install packages from dependencies.yaml
