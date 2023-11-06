@@ -103,3 +103,35 @@ services:
       PMA_PASSWORD: root
     depends_on:
       - mysql
+
+  redis:
+    <<: *base
+    image: ${REDIS_IMAGE:-redis:7.0.8-alpine}
+    container_name: redis-con
+    hostname: redis
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+
+  redisinsight:
+    <<: *base
+    image: redislabs/redisinsight:latest
+    container_name: redisinsight-con
+    hostname: redisinsight
+    ports:
+      - "8004:8001"
+    volumes:
+      - ../data/redisinsight-data:/db
+    environment:
+      - TZ=UTC
+
+  rabbitmq:
+    <<: *base
+    image: rabbitmq:management
+    container_name: rabbitmq-con
+    hostname: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
