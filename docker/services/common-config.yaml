@@ -1,0 +1,5 @@
+version: "3"
+services:
+  base_service: &base
+    init: true
+    restart: always
