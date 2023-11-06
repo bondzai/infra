@@ -1,7 +1,0 @@
-version: "3.8"
-
-services:
-  mysql:
-    extends:
-      file: ../../services/services.yaml
-      service: mysql

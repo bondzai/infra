@@ -22,17 +22,17 @@ services:
     networks:
       - backend
 
-  pgadmin:
-    extends:
-      file: ../services/pgadmin.yml
-      service: pgadmin
-    networks:
-      - backend
-
   postgres:
     extends:
       file: ../services/postgres.yml
       service: postgres
+    networks:
+      - backend
+
+  pgadmin:
+    extends:
+      file: ../services/pgadmin.yml
+      service: pgadmin
     networks:
       - backend
 
