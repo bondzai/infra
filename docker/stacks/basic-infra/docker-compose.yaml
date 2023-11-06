@@ -3,42 +3,42 @@ version: "3.8"
 services:
   rabbitmq:
     extends:
-      file: ../services/rabbitmq.yml
+      file: ../../configs/services.yaml
       service: rabbitmq
     networks:
       - backend
 
   redis:
     extends:
-      file: ../services/redis.yml
+      file: ../configs/services.yaml
       service: redis
     networks:
       - backend
 
   redisinsight:
     extends:
-      file: ../services/redis-insight.yml
+      file: ../configs/services.yaml
       service: redisinsight
     networks:
       - backend
 
   postgres:
     extends:
-      file: ../services/postgres.yml
+      file: ../configs/services.yaml
       service: postgres
     networks:
       - backend
 
   pgadmin:
     extends:
-      file: ../services/pgadmin.yml
+      file: ../configs/services.yaml
       service: pgadmin
     networks:
       - backend
 
   influx:
     extends:
-      file: ../services/influx.yml
+      file: ../configs/services.yaml
       service: influx
     volumes:
       - ./data/influx_backup:/var/lib/influxdb
