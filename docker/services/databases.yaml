@@ -1,19 +1,17 @@
 services:
   influx:
+    <<: *base
     image: ${INFLUX_IMAGE:-influxdb:latest}
-    init: true
     container_name: influx-con
     hostname: influx
-    restart: always
     ports:
       - "8086:8086"
 
   postgres:
+    <<: *base
     image: ${POSTGRES_IMAGE:-postgres:13-alpine3.17}
-    init: true
     container_name: postgres-con
     hostname: postgres
-    restart: always
     ports:
       - "5432:5432"
     environment:
@@ -22,23 +20,21 @@ services:
       - POSTGRES_DB=init
 
   pgadmin:
+    <<: *base
     image: ${PGADMIN_IMAGE:-dpage/pgadmin4:latest}
-    init: true
     container_name: pgadmin-con
     hostname: pgadmin
-    restart: always
     environment:
-      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-admin@swd.dev}
-      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-swd12345}
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-admin@jb.dev}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-jb12345}
     ports:
       - ${PGADMIN_PORT:-5050}:80
 
   mongo:
+    <<: *base
     image: mongo:latest
-    init: true
     container_name: mongo-con
     hostname: mongo
-    restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
@@ -46,8 +42,8 @@ services:
       - "${PORT:-27017}:27017"
 
   mysql:
+    <<: *base
     image: mysql:latest
-    init: true
     container_name: mysql-con
     hostname: mysql
     command: --default-authentication-plugin=mysql_native_password
@@ -58,9 +54,10 @@ services:
       - "3306:3306"
 
   phpmyadmin:
+    <<: *base
     image: phpmyadmin/phpmyadmin:latest
-    init: true
-    container_name: phpmyadmin
+    container_name: phpmyadmin-con
+    hostname: phpmyadmin
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
