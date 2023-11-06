@@ -10,35 +10,35 @@ services:
 
   redis:
     extends:
-      file: ../configs/services.yaml
+      file: ../../configs/services.yaml
       service: redis
     networks:
       - backend
 
   redisinsight:
     extends:
-      file: ../configs/services.yaml
+      file: ../../configs/services.yaml
       service: redisinsight
     networks:
       - backend
 
   postgres:
     extends:
-      file: ../configs/services.yaml
+      file: ../../configs/services.yaml
       service: postgres
     networks:
       - backend
 
   pgadmin:
     extends:
-      file: ../configs/services.yaml
+      file: ../../configs/services.yaml
       service: pgadmin
     networks:
       - backend
 
   influx:
     extends:
-      file: ../configs/services.yaml
+      file: ../../configs/services.yaml
       service: influx
     volumes:
       - ./data/influx_backup:/var/lib/influxdb
