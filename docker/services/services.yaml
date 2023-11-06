@@ -1,4 +1,8 @@
 services:
+  base_service: &base
+    init: true
+    restart: always
+
   influx:
     <<: *base
     image: ${INFLUX_IMAGE:-influxdb:latest}
