@@ -66,3 +66,53 @@ services:
     image: ${NGINX_IMAGE:-nginx:latest}
     ports:
       - "${NGINX_PORT:-80}:80"
+
+  # automate
+  ctfreak:
+    image: jypsoftware/ctfreak
+    container_name: ctfreak-con
+    hostname: ctfreak
+    restart: always
+    volumes:
+      - ../data/ctfreak-data:/data
+    ports:
+      - "6700:6700"
+    environment:
+      - TZ=Asia/Bangkok
+
+  crontab-ui:
+    image: alseambusher/crontab-ui:latest
+    container_name: crontab-ui-con
+    hostname: crontab-ui
+    restart: always
+    volumes:
+      - ../data/crontabs:/crontab-ui/crontabs
+    ports:
+      - "18000:8000"
+
+  uptime-kuma:
+    image: ${UPTIME_KUMA_IMAGE:-louislam/uptime-kuma:1}
+    container_name: uptime-kuma-con
+    hostname: uptime-kuma
+    volumes:
+      - ../data/uptime-kuma-data:/app/data
+    ports:
+      - "18001:3001"
+    restart: always
+
+  semaphore:
+    image: semaphoreui/semaphore:latest
+    container_name: semaphore-con
+    hostname: semaphore
+    environment:
+      SEMAPHORE_DB_DIALECT: bolt
+      SEMAPHORE_ADMIN_PASSWORD: changeme
+      SEMAPHORE_ADMIN_NAME: admin
+      SEMAPHORE_ADMIN_EMAIL: admin@localhost
+      SEMAPHORE_ADMIN: admin
+    volumes:
+      - /path/to/data/home:/etc/semaphore # config.json location
+      - /path/to/data/lib:/var/lib/semaphore # database.boltdb location (Not required if using mysql or postgres)
+    ports:
+      - "6701:3000"
+    restart: always
