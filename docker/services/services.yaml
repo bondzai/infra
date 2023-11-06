@@ -3,6 +3,38 @@ services:
     init: true
     restart: always
 
+  portainer:
+    <<: *base
+    image: ${PORTAINER_IMAGE:-portainer/portainer-ce:latest}
+    container_name: portainer-con
+    hostname: portainer
+    ports:
+      - "9443:9443"
+    volumes:
+      - ../data/portainer:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  yacht:
+    <<: *base
+    image: ${YACTH_IMAGE:-selfhostedpro/yacht:latest}
+    container_name: yacht-con
+    hostname: yacht
+    ports:
+      - "9444:8000"
+    volumes:
+      - ../data/yacht:/config
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  rancher:
+    <<: *base
+    image: rancher/rancher
+    container_name: rancher-con
+    hostname: rancher
+    privileged: true
+    ports:
+      - "9445:80"
+      - "9446:443"
+
   influx:
     <<: *base
     image: ${INFLUX_IMAGE:-influxdb:latest}
