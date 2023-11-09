@@ -61,7 +61,7 @@ services:
     container_name: pgadmin-con
     hostname: pgadmin
     ports:
-      - ${PGADMIN_PORT:-5050}:80
+      - "${PGADMIN_PORT:-5050}:80"
     environment:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-admin@jb.dev}
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-jb12345}
@@ -95,10 +95,10 @@ services:
     container_name: phpmyadmin-con
     hostname: phpmyadmin
     ports:
-      - "8080:80"
+      - "8082:80"
     environment:
       PMA_HOST: mysql
-      PMA_PORT: 3306
+      PMA_PORT: "3306"
       PMA_USER: root
       PMA_PASSWORD: root
     depends_on:
