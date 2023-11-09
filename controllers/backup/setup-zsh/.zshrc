@@ -28,7 +28,6 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # Alias configuration
-alias jb-ip="curl http://ipecho.net/plain; echo"
 alias work-git-clone='bash ~/Desktop/code/tools/git-clone/main.sh'
 
 # ls
