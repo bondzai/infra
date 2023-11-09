@@ -1,7 +1,7 @@
 # ~/.zshrc_version_managers
 
 # GVM configuration
-[[ -s "/home/jb/.gvm/scripts/gvm" ]] && source "/home/jb/.gvm/scripts/gvm"
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 export GO111MODULE=on
 
 # Pyenv configuration
