@@ -2,6 +2,7 @@
 
 # Alias configuration
 alias work-git-clone='bash ~/Desktop/code/tools/git-clone/main.sh'
+alias gomake='curl -sL https://raw.githubusercontent.com/introbond/go-ez-toolbox/master/Makefile -o Makefile'
 
 # ls aliases
 alias l='ls -lh'
