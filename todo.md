@@ -4,6 +4,7 @@
 ## feature
 - ~~create network tools menu~~
 - ~~load configs dynamically~~
+- ~~make files centralize~~
 - create docker containers tools menu
 - arch linux handle
 - simple shell api
