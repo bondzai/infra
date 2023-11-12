@@ -8,7 +8,7 @@ MAIN_GO := ./cmd/main.go # Define the path to your main Go file here
 .PHONY: init install-dogo build watch
 
 # Initial setup: install dogo, create config, and build the project
-init: main-init dogo-init dogo-config build gen-gitignore
+init: main-init ez-init dogo-init dogo-config clean build gen-gitignore
 
 # Install the main.go path
 main-init:
@@ -25,11 +25,14 @@ main-init:
 		echo '}' >> $(MAIN_GO); \
 	fi
 
+# Install the James-Bond utilities toolbox pkg
+ez-init:
+	go get github.com/introbond/go-ez-toolbox/toolbox
+
 # Install the dogo compiler for automatic rebuilds
 dogo-init:
 	go get github.com/liudng/dogo
 	go install github.com/liudng/dogo
-	go mod tidy
 
 # Create a dogo.json configuration file if it doesn't exist
 dogo-config:
@@ -48,6 +51,7 @@ dogo-config:
 # Clean the project: remove binary and clean Go cache
 clean:
 	@echo "  >  Cleaning build cache...\n"
+	go mod tidy
 	go clean
 	rm -f $(BINARY_NAME)
 
