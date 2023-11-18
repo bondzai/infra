@@ -1,0 +1,48 @@
+version: '3'
+services:
+  scylla:
+    image: scylladb/scylla:latest
+    ports:
+      - "9042:9042" # CQL
+      - "10000:10000" # REST API
+      - "9180:9180" # Alternator (DynamoDB API)
+      - "7000:7000" # Intra-node communication
+      - "7001:7001" # TLS Intra-node communication
+      - "7199:7199" # JMX
+      - "9142:9142" # CQL SSL
+    command: --smp 1 --memory 1G --overprovisioned 1
+    volumes:
+      - scylla_data:/var/lib/scylla
+    healthcheck:
+      test: ["CMD", "nodetool", "status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_USER=admin
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+
+volumes:
+  scylla_data:
+  prometheus_data:
+  grafana_data:
