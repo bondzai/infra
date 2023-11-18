@@ -152,3 +152,7 @@ setup_ngrok() {
     /usr/local/bin/ngrok authtoken $NGROK_AUTHTOKEN
     echo "ngrok authtoken has been configured."
 }
+
+setup_make() {
+    sudo apt install make    
+}
