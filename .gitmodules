@@ -1,0 +1,4 @@
+[submodule "dotfiles"]
+	path = dotfiles
+	url = git@github.com:bondzai/dotfiles.git
+	branch = master
