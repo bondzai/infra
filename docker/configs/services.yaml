@@ -135,3 +135,11 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+
+  memcached:
+    <<: *base
+    image: memcached:latest
+    container_name: memcached-con
+    hostname: memcached
+    ports:
+      - "11211:11211"
