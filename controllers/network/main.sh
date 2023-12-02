@@ -1,4 +1,4 @@
-#1/bin/bash
+#!/bin/bash
 
 exec_check_network_status() {
     local host="www.google.com"
@@ -59,4 +59,14 @@ exec_ngrok() {
     
     echo "Starting ngrok HTTP tunnel on port $LOCAL_PORT..."
     /usr/local/bin/ngrok http $LOCAL_PORT &
+}
+
+exec_config_host() {
+    sudo nano /etc/hosts
+}
+
+exec_flush_dns() {
+    sudo systemd-resolve --flush-caches
+    sudo systemd-resolve --statistics
+    sudo dscacheutil -flushcache
 }
