@@ -126,7 +126,7 @@ services:
 
   rabbitmq:
     <<: *base
-    image: rabbitmq:management
+    image: rabbitmq:3.9.29-management
     container_name: rabbitmq-con
     hostname: rabbitmq
     environment:
