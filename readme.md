@@ -10,6 +10,7 @@ This repository provides a collection of **Bash scripts for Unix/Linux** machine
 git clone https://github.com/introbond/linux-infra-toolbox.git
 cd linux-infra-toolbox/cmd
 chmod +x main.sh setup.sh && ./setup.sh
+git submodule update --recursive --remote
 ```
 
 ## Usage
