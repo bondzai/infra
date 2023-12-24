@@ -1,8 +1,0 @@
-[submodule "dotfiles"]
-	path = dotfiles
-	url = git@github.com:bondzai/dotfiles.git
-	branch = master
-[submodule "makefiles"]
-	path = makefiles
-	url = git@github.com:bondzai/makefiles.git
-	branch = master
