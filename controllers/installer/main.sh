@@ -4,6 +4,7 @@ setup_starter_packages() {
     sudo apt update && sudo apt upggrade -y
     setup_git
     setup_docker
+    setup_taskc
 }
 
 setup_git() {
@@ -12,6 +13,10 @@ setup_git() {
 
 setup_docker() {
     sudo apt install docker.io
+}
+
+setup_taskc() {
+    sudo snap install task --classic
 }
 
 setup_k8s() {
