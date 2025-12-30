@@ -148,6 +148,22 @@ setup_zsh() {
         echo "zsh-wakatime is already installed."
     fi
 
+    # Install zsh-completions
+    if [ ! -d "$ZSH_CUSTOM/plugins/zsh-completions" ]; then
+        echo "Installing zsh-completions..."
+        git clone https://github.com/zsh-users/zsh-completions.git $ZSH_CUSTOM/plugins/zsh-completions
+    else
+        echo "zsh-completions is already installed."
+    fi
+
+    # Install zsh-history-substring-search
+    if [ ! -d "$ZSH_CUSTOM/plugins/zsh-history-substring-search" ]; then
+        echo "Installing zsh-history-substring-search..."
+        git clone https://github.com/zsh-users/zsh-history-substring-search.git $ZSH_CUSTOM/plugins/zsh-history-substring-search
+    else
+        echo "zsh-history-substring-search is already installed."
+    fi
+
     # Update .zshrc to include plugins if they aren't already there
     if ! grep -q "zsh-autosuggestions" "$HOME/.zshrc"; then
         sed -i.bak 's/^plugins=(/plugins=(zsh-autosuggestions /' $HOME/.zshrc
@@ -157,6 +173,12 @@ setup_zsh() {
     fi
     if ! grep -q "zsh-wakatime" "$HOME/.zshrc"; then
         sed -i.bak 's/^plugins=(/plugins=(zsh-wakatime /' $HOME/.zshrc
+    fi
+    if ! grep -q "zsh-completions" "$HOME/.zshrc"; then
+        sed -i.bak 's/^plugins=(/plugins=(zsh-completions /' $HOME/.zshrc
+    fi
+    if ! grep -q "zsh-history-substring-search" "$HOME/.zshrc"; then
+        sed -i.bak 's/^plugins=(/plugins=(zsh-history-substring-search /' $HOME/.zshrc
     fi
 
     echo "Setup complete! If you made any new installations, please restart your terminal or execute 'source ~/.zshrc' to activate changes."
